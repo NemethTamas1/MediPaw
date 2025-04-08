@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AllatController;
+use App\Http\Controllers\GazdiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,3 +10,4 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::apiResource("/allatok", AllatController::class);
+Route::apiResource("/gazdik", GazdiController::class);
