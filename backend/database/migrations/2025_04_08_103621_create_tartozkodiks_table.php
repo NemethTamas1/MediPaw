@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("allat_id");
             $table->unsignedBigInteger("rendelo_id");
+            
             $table->foreign("allat_id")->references("id")->on("allatok");
             $table->foreign("rendelo_id")->references("id")->on("rendelok");
+
+            $table->dateTime("idopont")->nullable();
+            $table->boolean("kifizetve");
+            $table->string("leiras", 255)->nullable();
         });
     }
 

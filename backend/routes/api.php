@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AllatController;
 use App\Http\Controllers\GazdiController;
+use App\Http\Controllers\TartozkodikController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -11,3 +12,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource("/allatok", AllatController::class);
 Route::apiResource("/gazdik", GazdiController::class);
+Route::apiResource("/tartozkodik", TartozkodikController::class);

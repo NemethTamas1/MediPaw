@@ -13,7 +13,11 @@ class Tartozkodik extends Model
     protected $table = "tartozkodik";
 
     protected $fillable = [
-        "orvos_id",
-        "rendelo_id"
+        "id",
+        "allat_id",
+        "rendelo_id",
+        "leiras",
+        "idopont",
+        "kifizetve"
     ];
 }

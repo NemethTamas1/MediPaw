@@ -16,11 +16,17 @@ class TartozkodikSeeder extends Seeder
         DB::table("tartozkodik")->insert([
             [
                 "allat_id"=>1,
-                "rendelo_id"=>1
+                "rendelo_id"=>1,
+                "idopont"=>null,
+                "kifizetve"=>false,
+                "leiras"=>null
             ],
             [
                 "allat_id"=>2,
-                "rendelo_id"=>2
+                "rendelo_id"=>2,
+                "idopont"=>null,
+                "kifizetve"=>false,
+                "leiras"=>null
             ]
         ]);
     }
