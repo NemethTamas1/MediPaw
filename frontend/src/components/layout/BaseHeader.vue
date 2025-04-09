@@ -1,9 +1,14 @@
 <template>
-  <nav class="bg-white">
-    <div class="flex justify-between p-3 border-b-2 flex-wrap">
-      <RouterLink to="/" class="flex items-center space-x-3">
-        <span class="self-center text-2xl font-semibold">Feladat</span>
+  <nav class="bg-indigo-500 text-white">
+    <div class="flex p-3 border-b-2 flex-wrap">
+      <RouterLink to="" class="flex items-center space-x-3">
+        <span class="self-center text-2xl font-semibold pr-10">Állatorvosi Rendelő</span>
       </RouterLink>
+
+      <RouterLink to="/" class="flex items-center space-x-3">
+        <span class="self-center text-1xl font-semibold pr-4">Főoldal</span>
+      </RouterLink>
+
       <button class="block md:hidden" @click="toggleMenu">
         <svg
           class="w-5 h-5"
@@ -21,11 +26,6 @@
           />
         </svg>
       </button>
-      <div class="w-full md:block md:w-auto" :class="{hidden: !menuOpen}">
-        <ul class="flex flex-col p-4 md:flex-row md:p-0 md:space-x-8">
-          <li class="block py-2 px-3 text-gray-500 hover:bg-blue-400 hover:text-white rounded p-2 has-[.active]:text-blue-500 has-[.active]:hover:text-white"><RouterLink to="#">1. oldal</RouterLink></li>
-        </ul>
-      </div>
     </div>
   </nav>
 </template>

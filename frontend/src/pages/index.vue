@@ -1,26 +1,24 @@
 <template>
   <BaseLayout>
-    <h1 class="text-6xl my-10">Hello!</h1>
-    <button class="bg-blue-500 text-white rounded py-2 px-4" @click="increment()">
-      Számláló: {{ counter }}
-    </button>
+    <FormKit type="form" :actions="false" form-class="bg-indigo-500 mx-auto w-3/12 mt-10 rounded rounded-xl">
+      <div class="pt-3">
+        <FormKit type="text" label="Felhasználónév" label-class="text-xl text-white ml-3"
+          input-class="text-xl text-white ml-3 rounded w-10/12" />
+      </div>
+      <div class="pt-3">
+        <FormKit type="password" label="Jelszó" label-class="text-xl text-white ml-3"
+          input-class="text-xl text-white ml-3 rounded w-10/12" />
+      </div>
+      <div class="pt-2">
+        <RouterLink :to="`main/`">
+          <button type="submit" class="rounded bg-white text-indigo-500 font-bold p-2 m-3">Bejelentkezés</button>
+        </RouterLink>
+      </div>
+    </FormKit>
   </BaseLayout>
 </template>
 
-<script>
+<script setup>
 import BaseLayout from '@layouts/BaseLayout.vue'
-import { useCounter } from '@stores/CounterStore.mjs'
-import { mapState, mapActions } from 'pinia'
-
-export default {
-  components: {
-    BaseLayout
-  },
-  computed: {
-    ...mapState(useCounter, ['counter'])
-  },
-  methods: {
-    ...mapActions(useCounter, ['increment'])
-  }
-}
+import { RouterLink } from 'vue-router';
 </script>
