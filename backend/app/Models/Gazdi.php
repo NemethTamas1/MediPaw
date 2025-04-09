@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Gazdi extends Model
 {
@@ -17,4 +18,8 @@ class Gazdi extends Model
         "cim",
         "telefon"
     ];
+
+    public function allatok():HasMany{
+        return $this->hasMany(Allat::class, "gazdi_id", "id");
+    }
 }

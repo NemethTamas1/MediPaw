@@ -10,6 +10,15 @@ export const useAllatStore = defineStore("allatok", {
         async getAllats(){
             const response = await http.get("allatok")
             this.allatok = response.data.data
+        },
+
+        async getGazdi(id){
+            const response = await http.get("gazdik");
+        },
+
+        async getAllat(id){
+            const response = await http.get(`allatok/${id}`)
+            this.allat = response.data.data
         }
     }
 })

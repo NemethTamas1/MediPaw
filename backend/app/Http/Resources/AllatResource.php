@@ -19,8 +19,11 @@ class AllatResource extends JsonResource
             "nev"=>$this->nev,
             "kor"=>$this->kor,
             "fajta"=>$this->fajta,
-            "oltva"=>$this->fatja ? "oltva" : "nem oltva",
-            "gazdi_id"=>$this->gazdi_id
+            "oltva"=>$this->oltva ? "oltva" : "nem oltva",
+            "gazdi_id"=>$this->gazdi_id,
+            "gazda"=>new GazdiResource($this->whenLoaded("gazdi"))
+
+            //Kérdés, hogy a leírást vissza kell-e adni.
         ];
     }
 }

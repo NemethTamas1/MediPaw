@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("nev", 100);
             $table->integer("kor");
             $table->string("fajta", 100);
+            $table->text("leiras")->nullable();
         });
     }
 
