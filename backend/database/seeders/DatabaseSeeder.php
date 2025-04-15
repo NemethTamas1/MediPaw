@@ -13,12 +13,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'Teszt User',
+            'email' => 'test@example.com',
+            'password' => 'bob123456',
+            'role' => 'user'
+        ]);
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => 'admin123456',
+            'role' => 'admin'
+        ]);
+
 
         $this->call(GazdiSeeder::class);
         $this->call(AllatSeeder::class);

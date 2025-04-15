@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Allat;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class StoreAllatRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class StoreAllatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Gate::authorize("create", Allat::class)->allowed();
     }
 
     /**

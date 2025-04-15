@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AllatController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GazdiController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TartozkodikController;
+use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::apiResource("/allatok", AllatController::class);
+
+Route::apiResource("/allatok", AllatController::class)->middleware("auth:sanctum");
+
+Route::post("/register", [RegisterController::class, "store"])->name("register.store");
+Route::post("/authenticate", [AuthController::class, "authenticate"])->name("auth.authenticate");
+
 Route::apiResource("/gazdik", GazdiController::class);
 Route::apiResource("/tartozkodik", TartozkodikController::class);

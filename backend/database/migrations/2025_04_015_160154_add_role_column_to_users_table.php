@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orvosok', function (Blueprint $table) {
-            $table->id();
-            $table->string("nev", 100);
-            $table->string("cim", 100);
-            $table->string("telefon",100);
-            //$table->string("email", "50");
+        Schema::table('users', function (Blueprint $table) {
+            $table->string("role",10)->default("user");
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orvosok');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };
