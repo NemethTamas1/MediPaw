@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Allat extends Model
 {
@@ -15,14 +15,15 @@ class Allat extends Model
 
     protected $fillable = [
         "id",
+        "gazdi_id",
+        "nev",
         "kor",
         "fajta",
-        "gazdi_id",
-        "oltva",
-        "nev"
+        "szin",
+        "suly"
     ];
 
-    public function gazdi():BelongsTo{
-        return $this->belongsTo(Gazdi::class, "gazdi_id", "id");
+    public function gazdi():BelongsToMany{
+        return $this->belongsToMany(Gazdi::class, "kezelesek", "allat_id", "dolgozo_id");
     }
 }

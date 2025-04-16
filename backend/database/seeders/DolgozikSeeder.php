@@ -15,12 +15,12 @@ class DolgozikSeeder extends Seeder
     {
         DB::table("dolgozik")->insert([
             [
-                "orvos_id"=>1,
-                "rendelo_id"=>1
+                "rendelo_id"=>1,
+                "dolgozo_id"=>1
             ],
             [
-                "orvos_id"=>2,
-                "rendelo_id"=>2
+                "rendelo_id"=>2,
+                "dolgozo_id"=>2
             ]
         ]);
     }

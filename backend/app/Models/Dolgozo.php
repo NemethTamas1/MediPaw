@@ -2,22 +2,29 @@
 
 namespace App\Models;
 
+use App\Models\Rendelo;
 use Auth;
 use Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Sanctum\HasApiTokens;
 
-class Orvos extends Model
+class Dolgozo extends Model
 {
     use HasFactory, HasApiTokens;
 
     public $timestamps = false;
-    protected $table = "orvosok";
+    protected $table = "dolgozok";
     protected $fillable = [
         "id",
         "nev",
-        "cim",
-        "telefon"
+        "telefon",
+        "role",
+        "beosztas"
     ];
+
+    public function rendelok():BelongsToMany {
+        return $this->belongsToMany(Rendelo::class, "dolgozik", "dolgozo_id", "rendelo_id");
+    }
 }

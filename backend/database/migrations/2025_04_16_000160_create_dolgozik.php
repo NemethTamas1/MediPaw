@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('dolgozik', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("orvos_id");
+
+            //"rendelo_id" mező
             $table->unsignedBigInteger("rendelo_id");
-            $table->foreign("orvos_id")->references("id")->on("orvosok");
             $table->foreign("rendelo_id")->references("id")->on("rendelok");
+
+            //"dolgozo_id" mező
+            $table->unsignedBigInteger("dolgozo_id");
+            $table->foreign("dolgozo_id")->references("id")->on("dolgozok");
         });
     }
 

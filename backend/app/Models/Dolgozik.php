@@ -13,7 +13,7 @@ class Dolgozik extends Model
     protected $table = "dolgozik";
 
     protected $fillable = [
-        "orvos_id",
-        "rendelo_id"
+        "rendelo_id",
+        "dolgozo_id",
     ];
 }

@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tartozkodik extends Model
+class Kezeles extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = "tartozkodik";
+    protected $table = "kezelesek";
 
     protected $fillable = [
         "id",
         "allat_id",
-        "rendelo_id",
+        "dolgozo_id",
         "leiras",
-        "idopont",
+        "datum",
         "kifizetve"
     ];
 }

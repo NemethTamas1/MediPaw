@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('allatok', function (Blueprint $table) {
+        Schema::create('tulajdonos', function (Blueprint $table) {
             $table->id();
+
+            //"gazdi_id" mező
             $table->unsignedBigInteger("gazdi_id");
-            $table->foreign("gazdi_id")->references("id")->on("gazdik");
-            $table->boolean("oltva");
-            $table->string("nev", 100);
-            $table->integer("kor");
-            $table->string("fajta", 100);
-            $table->text("leiras")->nullable();
+            $table->foreign("gazdi_id")->references("id")->on("gazdik")->onDelete("cascade");
+
+            //"allat_id" mező
+            $table->unsignedBigInteger("allat_id");
+            $table->foreign("allat_id")->references("id")->on("allatok")->onDelete("cascade");
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('allatok');
+        Schema::dropIfExists('tulajdonos');
     }
 };
