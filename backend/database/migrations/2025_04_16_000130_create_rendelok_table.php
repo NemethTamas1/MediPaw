@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             
             //"dolgozo_id" mező
-            $table->unsignedBigInteger("dolgozo_id");
+            $table->unsignedBigInteger("dolgozo_id")->nullable();
             $table->foreign("dolgozo_id")->references("id")->on("dolgozok");
 
             //"allat_id" mező
-            $table->unsignedBigInteger("allat_id");
+            $table->unsignedBigInteger("allat_id")->nullable();
             $table->foreign("allat_id")->references("id")->on("allatok");
 
             //"gazdi_id" mező
