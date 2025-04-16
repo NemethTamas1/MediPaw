@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer("kor");
             $table->string("fajta", 100);
             $table->string("szin", 100);
-            $table->decimal("suly");
+            $table->integer("suly");
         });
     }
 

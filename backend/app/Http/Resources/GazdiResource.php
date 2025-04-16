@@ -19,6 +19,7 @@ class GazdiResource extends JsonResource
             "nev"=>$this->nev,
             "cim"=>$this->cim,
             "telefon"=>$this->telefon,
+            "email"=>$this->email
         ];
     }
 }

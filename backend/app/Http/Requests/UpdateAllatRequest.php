@@ -25,9 +25,9 @@ class UpdateAllatRequest extends FormRequest
             "id"=>["integer", "required", "min:0"],
             "nev"=>["string", "max:100"],
             "kor"=>["integer", "min:0", "max:25"],
-            "oltva"=>["boolean", "required"],
-            "fajta"=>["required", "string", "max:100"],
-            "gazdi_id"=>["required", "exists:gazdik,id"],
+            "fajta"=>["required", "string", "min:0"],
+            "szin"=>["required", "string", "max:100"],
+            "suly"=>["required", "numeric", "min:0"],
         ];
     }
 }

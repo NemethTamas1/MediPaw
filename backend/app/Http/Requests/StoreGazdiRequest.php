@@ -26,6 +26,7 @@ class StoreGazdiRequest extends FormRequest
             "nev"=>["required", "string", "max:100"],
             "cim"=>["required", "string", "max:255"],
             "telefon"=>["required", "string", "min:0"],
+            "email"=>["required", "email:rfc"]
         ];
     }
 }

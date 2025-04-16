@@ -11,10 +11,15 @@ class StoreAllatRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
-        return Gate::authorize("create", Allat::class)->allowed();
-    }
+
+    //|--------------------------------------------------------------------------|
+    //|  ❗❗ITT KELL ÁLLÍTANI, HA AUTHORIZE-AL AKAROM FELKÜLDENI AZ ÚJ ÁLLATOT❗❗  |
+    //|--------------------------------------------------------------------------|
+
+    // public function authorize(): bool
+    // {
+    //     return Gate::authorize("create", Allat::class)->allowed();
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -27,9 +32,9 @@ class StoreAllatRequest extends FormRequest
             "id"=>["integer", "required", "min:0"],
             "nev"=>["string", "max:100"],
             "kor"=>["integer", "min:0", "max:25"],
-            "oltva"=>["boolean", "required"],
-            "fajta"=>["required", "string", "max:100"],
-            "gazdi_id"=>["required", "exists:gazdik,id"],
+            "fajta"=>["required", "string", "min:0"],
+            "szin"=>["required", "string", "max:100"],
+            "suly"=>["required", "numeric", "min:0"],
         ];
     }
 }

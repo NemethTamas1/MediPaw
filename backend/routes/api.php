@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 
-Route::apiResource("/allatok", AllatController::class)->middleware("auth:sanctum");
+Route::apiResource("/allatok", AllatController::class);//->middleware("auth:sanctum");
+Route::apiResource("/gazdik", GazdiController::class);
+
 
 Route::post("/register", [RegisterController::class, "store"])->name("register.store");
 Route::post("/authenticate", [AuthController::class, "authenticate"])->name("auth.authenticate");
 
-Route::apiResource("/gazdik", GazdiController::class);

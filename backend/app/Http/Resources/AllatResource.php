@@ -19,10 +19,8 @@ class AllatResource extends JsonResource
             "nev"=>$this->nev,
             "kor"=>$this->kor,
             "fajta"=>$this->fajta,
-            "oltva"=>$this->oltva,
-            "gazdi_id"=>$this->gazdi_id,
-            "gazda"=>new GazdiResource($this->whenLoaded("gazdi")),
-            "leiras"=>$this->leiras ?? "Nincsenek részletek."
+            "szin"=>$this->szin,
+            "suly"=>$this->suly . " kg",
 
             //Kérdés, hogy a leírást vissza kell-e adni.
             //Továbbá kérdés, hogy a rendelőt vissza kell-e adni ahol az állatot ellátták.
