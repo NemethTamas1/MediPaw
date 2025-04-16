@@ -16,7 +16,6 @@ class AllatSeeder extends Seeder
         DB::table("allatok")->insert([
             [
                 "id"=>1,
-                "gazdi_id"=>1,
                 "nev"=>"Bodri",
                 "kor"=>3,
                 "fajta"=>"Golden Retriever",
@@ -25,7 +24,6 @@ class AllatSeeder extends Seeder
             ],
             [
                 "id"=>2,
-                "gazdi_id"=>2,
                 "nev"=>"Cirmi",
                 "kor"=>2,
                 "fajta"=>"Sziámi",

@@ -14,12 +14,11 @@ class Rendelo extends Model
     public $timestamps = false;
     protected $fillable = [
         "id",
-        "kezeles_id",
         "allat_id",
         "gazdi_id",
         "dolgozo_id",
         "cim",
-        "nyitvatartas"
+        "nyitvatartas",
     ];
 
     public function dolgozok():BelongsToMany {

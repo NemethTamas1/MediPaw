@@ -18,10 +18,12 @@ class Dolgozo extends Model
     protected $table = "dolgozok";
     protected $fillable = [
         "id",
-        "nev",
+        "name",
         "telefon",
         "role",
-        "beosztas"
+        "beosztas",
+        "email",
+        "password",
     ];
 
     public function rendelok():BelongsToMany {

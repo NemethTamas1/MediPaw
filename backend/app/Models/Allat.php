@@ -15,15 +15,18 @@ class Allat extends Model
 
     protected $fillable = [
         "id",
-        "gazdi_id",
         "nev",
         "kor",
         "fajta",
         "szin",
-        "suly"
+        "suly",
     ];
 
     public function gazdi():BelongsToMany{
         return $this->belongsToMany(Gazdi::class, "kezelesek", "allat_id", "dolgozo_id");
+    }
+
+    public function oltasok():BelongsToMany {
+        return $this->belongsToMany(Oltas::class, "oltas_allat", "allat_id", "oltas_id");
     }
 }

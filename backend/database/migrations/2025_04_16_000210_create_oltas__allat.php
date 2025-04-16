@@ -21,6 +21,8 @@ return new class extends Migration
             //"allat_id" mező
             $table->unsignedBigInteger("allat_id");
             $table->foreign("allat_id")->references("id")->on("allatok")->onDelete("cascade");
+
+            $table->string("datum", 100);
         });
     }
 

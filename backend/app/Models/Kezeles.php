@@ -14,10 +14,11 @@ class Kezeles extends Model
 
     protected $fillable = [
         "id",
-        "allat_id",
-        "dolgozo_id",
         "leiras",
+        "allat_id",
         "datum",
-        "kifizetve"
+        "rendelo_id",
+        "kifizetve",
+        "dolgozo_id",
     ];
 }

@@ -16,21 +16,19 @@ class RendeloSeeder extends Seeder
         DB::table("rendelok")->insert([
             [
                 "id"=>1,
-                "kezeles_id"=>1,
                 "allat_id"=>1,
                 "gazdi_id"=>1,
                 "dolgozo_id"=>1,
                 "cim"=>"Első rendelő címe",
-                "nyitvatartás"=>"8:00 - 20:00"
+                "nyitvatartas"=>"8:00 - 20:00"
             ],
             [
                 "id"=>2,
-                "kezeles_id"=>2,
                 "allat_id"=>2,
                 "gazdi_id"=>2,
                 "dolgozo_id"=>1,
                 "cim"=>"Második rendelő címe",
-                "nyitvatartás"=>"10:00 - 18:00"
+                "nyitvatartas"=>"10:00 - 18:00"
             ]
         ]);
     }

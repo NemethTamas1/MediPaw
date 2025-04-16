@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterUserRequest;
-use App\Models\User;
+use App\Http\Requests\RegisterDolgozoRequest;
+use App\Models\Dolgozo;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function store(RegisterUserRequest $request){
+    public function store(RegisterDolgozoRequest $request){
         $data = $request->validated();
 
-        $user = User::create($data);
+        $dolgozo = Dolgozo::create($data);
 
         return response()->json([
             "data" => [
-                "message" => "A(z) $user->email sikeresen regisztrált."
+                "message" => "A(z) $dolgozo->email sikeresen regisztrált."
             ]
         ]);
     }

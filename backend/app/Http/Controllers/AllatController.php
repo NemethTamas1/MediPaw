@@ -15,7 +15,7 @@ class AllatController extends Controller
      */
     public function index()
     {
-        $data = Allat::with("gazdi")->get();
+        $data = Allat::with(["gazdi","oltasok"])->get();
 
         return AllatResource::collection($data);
     }

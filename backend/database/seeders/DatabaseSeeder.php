@@ -28,13 +28,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        $this->call(GazdiSeeder::class);
         $this->call(AllatSeeder::class);
-        //$this->call(OrvosSeeder::class);
+        $this->call(GazdiSeeder::class);
+        $this->call(DolgozokSeeder::class);
         $this->call(RendeloSeeder::class);
-
-        $this->call(TartozkodikSeeder::class);
-        //$this->call(DolgozikSeeder::class);
+        $this->call(KezelesSeeder::class);
         $this->call(TulajdonosSeeder::class);
+        $this->call(DolgozikSeeder::class);
+        $this->call(OltasSeeder::class);
+        $this->call(Oltas_AllatSeeder::class);
     }
 }

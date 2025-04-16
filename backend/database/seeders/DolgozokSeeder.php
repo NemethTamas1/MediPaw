@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 
-class DolgozoSeeder extends Seeder
+class DolgozokSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,16 +17,20 @@ class DolgozoSeeder extends Seeder
         DB::table("dolgozok")->insert([
             [
                 "id"=>1,
-                "nev"=>"AdminOrvos",
+                "name"=>"AdminOrvos",
                 "telefon"=>"AdminOrvosTelefonszama",
                 "role"=>"admin",
+                "password"=>"AdminOrvosJelszo",
+                "email"=>"adminorvos@gmail.com",
                 "beosztas"=>"orvos"
             ],
             [
                 "id"=>2,
-                "nev"=>"UserTakarito",
+                "name"=>"UserTakarito",
                 "telefon"=>"UserTakaritoTelefonszama",
                 "role"=>"user",
+                "password"=>"UserTakaritoJelszo",
+                "email"=>"usertakarito@gmail.com",
                 "beosztas"=>"takarito"
             ]
         ]);

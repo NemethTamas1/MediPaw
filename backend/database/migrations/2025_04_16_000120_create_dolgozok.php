@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('dolgozok', function (Blueprint $table) {
             $table->id();
 
-            $table->string("nev", 100);
+            $table->string("name", 100);
             $table->string("telefon", 30);
+            $table->string("password", 100);
+            $table->string("email", 100);
             $table->string("role", 20);
             $table->string("beosztas", 255);
         });

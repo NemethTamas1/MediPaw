@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TartozkodikResource extends JsonResource
+class DolgozoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,11 @@ class TartozkodikResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "allat_id"=>$this->allat_id,
-            "rendelo_id"=>$this->rendelo_id,
-            "leiras"=>$this->leiras,
-            "idopont"=>$this->idopont,
-            "kifizetve"=>$this->kifizetve ? "igen" : "nem"
+            "nev"=>$this->id,
+            "telefon"=>$this->telefon,
+            "email"=>$this->email,
+            "role"=>$this->role,
+            "beosztas"=>$this->beosztas
         ];
     }
 }

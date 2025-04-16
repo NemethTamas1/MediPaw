@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orvos;
+use App\Http\Requests\StoreDolgozoRequest;
+use App\Http\Resources\DolgozoResource;
+use App\Models\Dolgozo;
 use Illuminate\Http\Request;
 
-class OrvosController extends Controller
+class DolgozoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +20,19 @@ class OrvosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDolgozoRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $ujDolgozo = Dolgozo::create($data);
+
+        return new DolgozoResource($ujDolgozo);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Orvos $orvos)
+    public function show(string $id)
     {
         //
     }
@@ -34,7 +40,7 @@ class OrvosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Orvos $orvos)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -42,7 +48,7 @@ class OrvosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Orvos $orvos)
+    public function destroy(string $id)
     {
         //
     }

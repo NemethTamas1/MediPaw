@@ -2,13 +2,14 @@
 
 namespace App\Policies;
 
+use App\Models\Dolgozo;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class BasePolicy
 {
-    protected function isAdmin(User $user)
+    protected function isAdmin(Dolgozo $dolgozo)
     {
-        return "admin" == $user->role;
+        return "admin" == $dolgozo->role;
     }
 }

@@ -20,13 +20,13 @@ return new class extends Migration
 
             //"dolgozo_id" mező
             $table->unsignedBigInteger("dolgozo_id");
-            $table->foreign("dolgozo_id")->references("dolgozo_id")->on("rendelok");
+            $table->foreign("dolgozo_id")->references("id")->on("dolgozok");
             
             //"rendelo_id" mező
             $table->unsignedBigInteger("rendelo_id");
             $table->foreign("rendelo_id")->references("id")->on("rendelok");
 
-            $table->dateTime("datum")->nullable();
+            $table->string("datum", 100)->nullable();
             $table->boolean("kifizetve");
             $table->text("leiras")->nullable();
         });

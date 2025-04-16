@@ -16,7 +16,8 @@ class Gazdi extends Model
         "id",
         "nev",
         "cim",
-        "telefon"
+        "telefon",
+        "email"
     ];
 
     public function allatok():HasMany{
