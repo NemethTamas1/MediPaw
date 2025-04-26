@@ -16,11 +16,11 @@ class DolgozokSeeder extends Seeder
         DB::table("dolgozok")->insert([
             [
                 "id"=>1,
-                "name"=>"AdminOrvos",
+                "name"=>"admin",
                 "telefon"=>"AdminOrvosTelefonszama",
                 "role"=>"admin",
-                "password"=>Hash::make("AdminOrvosJelszo"),
-                "email"=>"adminorvos@gmail.com",
+                "password"=>Hash::make("adminadmin"),
+                "email"=>"admin@gmail.com",
                 "beosztas"=>"orvos"
             ],
             [

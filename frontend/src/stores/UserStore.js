@@ -7,8 +7,8 @@ export const useUserStore = defineStore('users', {
     }),
     actions:{
         //Még nincs kész. Mit kapok vissza?
-        async authenticateUser(){
-            const response = await http.post('authenticate', (email, password));
+        async authenticateUser(email, password){
+            const response = await http.post('authenticate', {email, password});
             console.log(response);
         }
     }
