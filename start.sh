@@ -18,6 +18,8 @@ docker compose up -d
 
 docker compose exec backend composer install
 
+docker compose exec backend php artisan migrate:fresh --seed
+
 docker compose exec backend php artisan migrate
 
 if [ -z "${APP_KEY}" ]; then

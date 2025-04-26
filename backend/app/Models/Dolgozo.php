@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use App\Models\Rendelo;
-use Auth;
-use Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Sanctum\HasApiTokens;
 
-class Dolgozo extends Model
+class Dolgozo extends Authenticatable
 {
     use HasFactory, HasApiTokens;
 
@@ -29,4 +28,17 @@ class Dolgozo extends Model
     public function rendelok():BelongsToMany {
         return $this->belongsToMany(Rendelo::class, "dolgozik", "dolgozo_id", "rendelo_id");
     }
+
+    protected function casts(): array
+    {
+       return [
+           'email_verified_at' => 'datetime',
+           'password' => 'hashed',
+       ];
+    }
+
+    //protected $hidden = [
+    //'password',
+    //'remember_token',
+    //];
 }

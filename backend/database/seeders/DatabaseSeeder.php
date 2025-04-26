@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dolgozo;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,21 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Teszt User',
-            'email' => 'test@example.com',
-            'password' => 'bob123456',
-            'role' => 'user'
-        ]);
-
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => 'admin123456',
-            'role' => 'admin'
-        ]);
-
-
         $this->call(AllatSeeder::class);
         $this->call(GazdiSeeder::class);
         $this->call(DolgozokSeeder::class);
@@ -39,3 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Oltas_AllatSeeder::class);
     }
 }
+
+//Admin: 1|MjBtWCT5oSfIBTk8Ebt9Mq2rEsvlKMCOrVAMsqas8fe72cb3
+//Test: 2|LUhP8BltLhSRf2fUWDHqfY81mGSjF3q8rvHQFhKY3aa4c164

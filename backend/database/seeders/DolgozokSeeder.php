@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
 
 class DolgozokSeeder extends Seeder
 {
@@ -20,7 +19,7 @@ class DolgozokSeeder extends Seeder
                 "name"=>"AdminOrvos",
                 "telefon"=>"AdminOrvosTelefonszama",
                 "role"=>"admin",
-                "password"=>"AdminOrvosJelszo",
+                "password"=>Hash::make("AdminOrvosJelszo"),
                 "email"=>"adminorvos@gmail.com",
                 "beosztas"=>"orvos"
             ],
@@ -29,7 +28,7 @@ class DolgozokSeeder extends Seeder
                 "name"=>"UserTakarito",
                 "telefon"=>"UserTakaritoTelefonszama",
                 "role"=>"user",
-                "password"=>"UserTakaritoJelszo",
+                "password"=>Hash::make("UserTakaritoJelszo"),
                 "email"=>"usertakarito@gmail.com",
                 "beosztas"=>"takarito"
             ]
