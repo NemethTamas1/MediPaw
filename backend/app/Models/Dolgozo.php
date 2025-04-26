@@ -37,8 +37,8 @@ class Dolgozo extends Authenticatable
        ];
     }
 
-    //protected $hidden = [
-    //'password',
-    //'remember_token',
-    //];
+    protected $hidden = [
+    'password',
+    'remember_token',
+    ];
 }

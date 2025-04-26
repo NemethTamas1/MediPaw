@@ -3,13 +3,21 @@ import {http} from '@utils/http';
 
 export const useUserStore = defineStore('users', {
     state:()=>({
-        user:[]
+        user:[],
+        token: null
     }),
     actions:{
-        //Még nincs kész. Mit kapok vissza?
         async authenticateUser(email, password){
-            const response = await http.post('authenticate', {email, password});
-            console.log(response);
+            try{
+                const response = await http.post('authenticate', {email, password});
+                console.log('Válasz: ',response);
+                return response;
+                //this.token = response.data.data.token;
+                //localStorage.setItem('token', this.token);
+            }catch(err){
+                console.log('Hiba történt a bejelentkezés során: ', err);
+                throw err;
+            }
         }
     }
 })

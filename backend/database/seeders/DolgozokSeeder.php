@@ -16,20 +16,20 @@ class DolgozokSeeder extends Seeder
         DB::table("dolgozok")->insert([
             [
                 "id"=>1,
-                "name"=>"admin",
-                "telefon"=>"AdminOrvosTelefonszama",
+                "name"=>"Dr. Trükkös Tihamér",
+                "telefon"=>"06307589223",
                 "role"=>"admin",
-                "password"=>Hash::make("adminadmin"),
-                "email"=>"admin@gmail.com",
+                "password"=>Hash::make("trukkostihamer"),
+                "email"=>"trutih@gmail.com",
                 "beosztas"=>"orvos"
             ],
             [
                 "id"=>2,
-                "name"=>"UserTakarito",
-                "telefon"=>"UserTakaritoTelefonszama",
+                "name"=>"Böjte Erzsébet",
+                "telefon"=>"06205446712",
                 "role"=>"user",
-                "password"=>Hash::make("UserTakaritoJelszo"),
-                "email"=>"usertakarito@gmail.com",
+                "password"=>Hash::make("bojteerzsebet"),
+                "email"=>"bojerz@gmail.com",
                 "beosztas"=>"takarito"
             ]
         ]);

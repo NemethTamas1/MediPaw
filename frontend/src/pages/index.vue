@@ -39,10 +39,16 @@ const email = ref('');
 const password = ref('');
 const error = ref(null);
 
-async function handleLogin() {
+defineProps({
+  name: String
+})
+
+async function handleLogin(event) {
   try{
-    await userStore.authenticateUser(email.value, password.value);
+    const response = await userStore.authenticateUser(email.value, password.value);
+    const token = response.data.data.token;
     console.log('Sikeres bejelentkezés!')
+    sessionStorage.setItem('token', token);
   }catch(err){
     console.log('Sikertelen bejelentkezés: ', err)
     error.value = err;
