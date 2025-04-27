@@ -29,26 +29,39 @@
 </template>
 
 <script setup>
+// Importok
 import BaseLayout from '@layouts/BaseLayout.vue'
 import {ref} from 'vue';
 import {useUserStore} from '@stores/UserStore.js';
+import { useRouter } from 'vue-router';
 
-//Változók
+// Változók
 const userStore = useUserStore();
 const email = ref('');
 const password = ref('');
 const error = ref(null);
+const router = useRouter();
 
-defineProps({
-  name: String
-})
 
 async function handleLogin(event) {
   try{
     const response = await userStore.authenticateUser(email.value, password.value);
-    const token = response.data.data.token;
+
+    const beosztas = userStore.user.beosztas;
+    const role = userStore.user.role;
+
+    console.log(beosztas)
+    console.log(role)
+
+    if(role === 'admin' && beosztas === 'doktor') {
+      router.push('/doctor/');
+    } else if( role === 'admin' && beosztas === 'asszisztens') {
+      router.push('/assistant/');
+    } else if( role === 'user' && beosztas === 'takarito') {
+      router.push('/cleaner/');
+    }
     console.log('Sikeres bejelentkezés!')
-    sessionStorage.setItem('token', token);
+
   }catch(err){
     console.log('Sikertelen bejelentkezés: ', err)
     error.value = err;

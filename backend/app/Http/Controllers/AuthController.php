@@ -11,11 +11,17 @@ class AuthController extends Controller
     {
         if (Auth::attempt($request->validated())) {
 
+            $user = Auth::user();
             $token = Auth::user()->createToken('auth_token')->plainTextToken;
 
             return response()->json([
                 "data" => [
-                    "token" => $token
+                    "token" => $token,
+                    "user" => [
+                        "id" => $user->id,
+                        "role" => $user->role,
+                        "beosztas" => $user->beosztas
+                    ]
                 ]
             ], 200);
             

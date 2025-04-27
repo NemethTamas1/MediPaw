@@ -26,7 +26,7 @@ class UpdateDolgozoRequest extends FormRequest
             "nev"=>["required", "string", "min:0", "max:255"],
             "telefon"=>["required", "string", "min:0", "max:100"],
             "role"=>["required", "string", "in:admin,user"],
-            "beosztas"=>["required", "string", "in:orvos,takarito"],
+            "beosztas"=>["required", "string", "in:orvos,takarito,asszisztens"],
             "email"=>["required", "string", "email:rfc"],
             "password"=>["required", "string", "min:8"],
         ];

@@ -5,11 +5,11 @@
         <span class="self-center text-2xl font-semibold pr-10">Állatorvosi Rendelő</span>
       </RouterLink>
 
-      <RouterLink to="/" class="flex items-center space-x-3">
+      <RouterLink :to="'/'" class="flex items-center space-x-3">
         <span class="self-center text-1xl font-semibold pr-4">Főoldal</span>
       </RouterLink>
 
-      <button class="block md:hidden" @click="toggleMenu">
+      <!-- <button class="block md:hidden" @click="toggleMenu">
         <svg
           class="w-5 h-5"
           aria-hidden="true"
@@ -25,7 +25,7 @@
             d="M1 1h15M1 7h15M1 13h15"
           />
         </svg>
-      </button>
+      </button> -->
     </div>
   </nav>
 </template>
