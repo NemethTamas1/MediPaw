@@ -43,21 +43,24 @@ const error = ref(null);
 const router = useRouter();
 
 
-async function handleLogin(event) {
+async function handleLogin() {
+  error.value = null;
   try{
     const response = await userStore.authenticateUser(email.value, password.value);
 
     const beosztas = userStore.user.beosztas;
-    const role = userStore.user.role;
+    const user = userStore.user;
 
-    console.log(beosztas)
-    console.log(role)
+    console.log('Bejelentkezett felhasználó: ', userStore.user)
+    console.log('Token: ', sessionStorage.getItem('token'))
 
-    if(role === 'admin' && beosztas === 'doktor') {
+    if(user.role === 'admin' && user.beosztas === 'orvos') {
+      console.log('Próbálok átirányítani a doktor oldalra...');
       router.push('/doctor/');
-    } else if( role === 'admin' && beosztas === 'asszisztens') {
+      console.log('átirányítás megtörtént')
+    } else if( user.role === 'admin' && user.beosztas === 'asszisztens') {
       router.push('/assistant/');
-    } else if( role === 'user' && beosztas === 'takarito') {
+    } else if( user.role === 'user' && user.beosztas === 'takarito') {
       router.push('/cleaner/');
     }
     console.log('Sikeres bejelentkezés!')

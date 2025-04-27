@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Allat;
 use App\Models\Dolgozo;
-use App\Models\Orvos;
+use App\Policies\UserPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -22,17 +21,12 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
         Model::shouldBeStrict();
-
-        Gate::define("allat-felvetel", function(Dolgozo $dolgozo, Allat $allat){
-            return "admin" == $dolgozo->role || $allat->gazdi_id == $dolgozo->id;
-        });
-
-        Gate::define("dolgozo-felvetel", function(Dolgozo $dolgozo, Dolgozo $ujDolgozo){
-            return "admin" == $dolgozo->role;
-        });
         
+        Gate::define('isDoctor', [UserPolicy::class, 'isDoctor']);
+        Gate::define('isAssistant', [UserPolicy::class, 'isAssistant']);
+        Gate::define('isCleaner', [UserPolicy::class, 'isCleaner']);
     }
 }
