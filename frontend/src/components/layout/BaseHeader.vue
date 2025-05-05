@@ -2,7 +2,7 @@
   <nav class="bg-indigo-500 text-white">
     <div class="flex p-3 border-b-2 flex-wrap">
       <RouterLink to="" class="flex items-center space-x-3">
-        <span class="self-center text-2xl font-semibold pr-10">Állatorvosi Rendelő</span>
+        <span class="self-center text-2xl font-semibold pr-10">Medi <i class="fa-solid fa-paw"></i> Paw</span>
       </RouterLink>
 
       <RouterLink :to="'/'" class="flex items-center space-x-3">
