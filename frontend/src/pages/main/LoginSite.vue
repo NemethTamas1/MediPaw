@@ -1,22 +1,22 @@
 <template>
   <BaseLayout>
-    <FormKit @submit="handleLogin" type="form" :actions="false" form-class="bg-indigo-500 mx-auto w-3/12 mt-10 rounded rounded-xl"> 
+    <FormKit @submit="handleLogin" type="form" :actions="false" form-class="bg-white mx-auto w-3/12 mt-10 rounded rounded-xl"> 
 
       <!--Email-->
       <div class="pt-3">
-        <FormKit type="text" v-model="email" label="Email" label-class="text-xl text-white ml-3"
-          input-class="text-xl text-black ml-3 rounded w-10/12" />
+        <FormKit type="text" v-model="email" label="Email" label-class="text-xl text-black ml-3"
+          input-class="text-xl text-black ml-3 rounded w-10/12 border border-gray-500 p-2" placeholder="email@example.com"/>
       </div>
 
       <!--Jelszó-->
       <div class="pt-3">
-        <FormKit type="password" v-model="password" label="Jelszó" label-class="text-xl text-white ml-3"
-          input-class="text-xl text-black ml-3 rounded w-10/12" />
+        <FormKit type="password" v-model="password" label="Jelszó" label-class="text-xl text-black ml-3"
+          input-class="text-xl text-black ml-3 rounded w-10/12 border border-gray-500 p-2" placeholder="Jelszó" />
       </div>
 
       <!--Gomb-->
-      <div class="pt-2">
-          <button type="submit" class="rounded bg-white text-indigo-500 font-bold p-2 m-3">Bejelentkezés</button>
+      <div class="pt-2" ref="isUserLoggedIn">
+          <button type="submit" class="rounded bg-white text-black font-bold p-2 m-3 text-xl">Bejelentkezés</button>
       </div>
 
       

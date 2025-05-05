@@ -1,11 +1,17 @@
+import { componentSymbol } from '@formkit/vue';
 import { useUserStore } from '@stores/UserStore';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
     path: '/',
-    name: 'Login',
+    name: 'MainPage',
     component: () => import('@pages/main/MainPage.vue')
+  },
+  {
+    path: '/login',
+    name: 'LoginPage',
+    component: () => import('@pages/main/LoginSite.vue')
   },
   {
     path: '/doctor/',
@@ -37,12 +43,25 @@ const routes = [
       beosztas: 'takarito'
     }
   },
+  {
+    path: '/rendelo/:id',
+    name: 'RendeloMain',
+    component: () => import('@pages/main/[id]/RendeloMain.vue'),
+    meta:{
+      requiresAuth: true,
+      role: 'admin',
+      beosztas: 'orvos'
+    }
+  }
 ]
 
 export const router = createRouter({
   history: createWebHistory(),
   linkActiveClass: 'active',
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition){
+    return { top: 0}
+  }
 })
 
 router.beforeEach((to, from, next) => {

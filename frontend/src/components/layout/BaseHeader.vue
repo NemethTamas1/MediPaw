@@ -1,46 +1,52 @@
 <template>
-  <nav class="bg-indigo-500 text-white">
-    <div class="flex p-3 border-b-2 flex-wrap">
-      <RouterLink to="" class="flex items-center space-x-3">
-        <span class="self-center text-2xl font-semibold pr-10">Medi <i class="fa-solid fa-paw"></i> Paw</span>
-      </RouterLink>
+  <nav class="bg-black text-white">
+    <div class="flex p-3 flex-wrap justify-between w-full items-center">
 
-      <RouterLink :to="'/'" class="flex items-center space-x-3">
-        <span class="self-center text-1xl font-semibold pr-4">Főoldal</span>
-      </RouterLink>
+      <!-- Bal oldal: Logo + Főoldal -->
+      <div class="flex items-center space-x-6">
+        <RouterLink to="/" class="flex items-center space-x-3">
+          <span class="self-center text-2xl font-semibold">Medi <i class="fa-solid fa-paw"></i> Paw</span>
+        </RouterLink>
 
-      <!-- <button class="block md:hidden" @click="toggleMenu">
-        <svg
-          class="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 17 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15"
-          />
-        </svg>
-      </button> -->
+        <RouterLink to="/" class="flex items-center space-x-3">
+          <span class="self-center text-base font-semibold">Főoldal</span>
+        </RouterLink>
+      </div>
+
+      <!-- Jobb oldal: Bejelentkezés / Kijelentkezés -->
+      <div class="flex items-center">
+        <RouterLink v-if="!isUserLoggedIn" to="/login" class="flex items-center space-x-3">
+          <span class="self-center text-base font-semibold">Bejelentkezés</span>
+        </RouterLink>
+
+        <RouterLink v-if="isUserLoggedIn" to="/" class="flex items-center space-x-3">
+          <span class="self-center text-base font-semibold" @click="handleLogOut">Kijelentkezés</span>
+        </RouterLink>
+      </div>
+
     </div>
   </nav>
 </template>
 
-<script>
-export default{
-  data(){
-    return{
-      menuOpen: false
-    }
-  },
-  methods:{
-    toggleMenu(){
-      this.menuOpen = !this.menuOpen
-    }
-  }
-}
+
+<script setup>
+// Importok
+import {useUserStore} from '@stores/UserStore.js'
+import { onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
+
+// Változók
+const userStore = useUserStore();
+const isUserLoggedIn = ref(null);
+
+// Függvények
+onMounted(async () => {
+  isUserLoggedIn.value = await userStore.isLoggedIn();
+})
+
+// Kijelentkezés
+const handleLogOut = async () => {
+  await userStore.logout();
+  isUserLoggedIn.value = false;
+};
 </script>

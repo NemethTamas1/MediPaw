@@ -19,7 +19,7 @@ class RendeloSeeder extends Seeder
                 "allat_id"=>1,
                 "gazdi_id"=>1,
                 "dolgozo_id"=>1,
-                "cim"=>"Első rendelő címe",
+                "cim"=>"Mancsos Gyógykuckó",
                 "nyitvatartas"=>"8:00 - 20:00"
             ],
             [
@@ -27,7 +27,7 @@ class RendeloSeeder extends Seeder
                 "allat_id"=>2,
                 "gazdi_id"=>2,
                 "dolgozo_id"=>1,
-                "cim"=>"Második rendelő címe",
+                "cim"=>"HappyTail",
                 "nyitvatartas"=>"10:00 - 18:00"
             ]
         ]);

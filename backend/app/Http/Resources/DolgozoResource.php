@@ -16,7 +16,7 @@ class DolgozoResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "nev"=>$this->id,
+            "nev"=>$this->name,
             "telefon"=>$this->telefon,
             "email"=>$this->email,
             "role"=>$this->role,

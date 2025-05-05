@@ -14,7 +14,9 @@ class DolgozoController extends Controller
      */
     public function index()
     {
-        //
+        $data = Dolgozo::all();
+
+        return DolgozoResource::collection($data);
     }
 
     /**
@@ -32,9 +34,11 @@ class DolgozoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $dolgozo = Dolgozo::findOrFail($id);
+
+        return new DolgozoResource($dolgozo);
     }
 
     /**

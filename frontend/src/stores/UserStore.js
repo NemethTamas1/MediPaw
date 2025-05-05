@@ -38,6 +38,16 @@ export const useUserStore = defineStore('users', {
             }
         },
 
+        async GetRendeloDoctor(id){
+            const response = await http.get(`/rendelok/${id}`);
+            
+        },
+
+        // Csekk, hogy be van-e jelentkezve a felhasználó
+        async isLoggedIn(){
+            return sessionStorage.getItem('token') !== null;
+        },
+
         // Kijelentkezés
         logout(){
             this.token = null;
