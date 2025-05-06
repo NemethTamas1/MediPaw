@@ -17,10 +17,14 @@ class Gazdi extends Model
         "nev",
         "cim",
         "telefon",
-        "email"
+        "email",
+        "password"
     ];
 
     public function allatok():HasMany{
         return $this->hasMany(Allat::class, "gazdi_id", "id");
     }
+    protected $hidden = [
+        'password'
+    ];
 }

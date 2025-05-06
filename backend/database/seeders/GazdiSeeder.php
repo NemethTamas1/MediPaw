@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class GazdiSeeder extends Seeder
 {
@@ -19,14 +20,16 @@ class GazdiSeeder extends Seeder
                 "nev"=>"Tóth Imre",
                 "cim"=>"Eper utca 23",
                 "telefon"=>"06302541724",
-                "email"=>"tothimre@gmail.com"
+                "email"=>"tothimre@gmail.com",
+                "password"=>Hash::make("tothimre")
             ],
             [
                 "id"=>2,
                 "nev"=>"Takács Zsófia",
                 "cim"=>"Petőfi út 3",
                 "telefon"=>"06202321754",
-                "email"=>"takacszsofia@gmail.com"
+                "email"=>"takacszsofia@gmail.com",
+                "password"=>Hash::make("takacszsofia")
             ]
         ]);
     }

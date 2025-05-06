@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateGazdiRequest;
 use App\Http\Resources\GazdiResource;
 use App\Models\Gazdi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class GazdiController extends Controller
 {
@@ -26,6 +27,8 @@ class GazdiController extends Controller
     public function store(StoreGazdiRequest $request)
     {
         $data = $request->validated();
+
+        $data['password'] = Hash::make($data['password']);
 
         $ujGazdi = Gazdi::create($data);
 

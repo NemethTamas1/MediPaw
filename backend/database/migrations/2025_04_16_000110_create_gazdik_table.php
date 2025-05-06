@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("cim", 100);
             $table->string("telefon", 30);
             $table->string("email", 100);
+            $table->string("password", 100);
 
         });
     }
