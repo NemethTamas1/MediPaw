@@ -52,6 +52,14 @@ const routes = [
       role: 'admin',
       beosztas: 'orvos'
     }
+  },
+  {
+    path: '/gazdi/dashboard',
+    name: 'GazdiDashboard',
+    component: () => import('@pages/main/GazdiDashboard.vue'),
+    meta:{
+      requiresAuth: true
+    }
   }
 ]
 
@@ -64,41 +72,30 @@ export const router = createRouter({
   }
 })
 
+const checkUserPermission = (user, routeMeta) => {
+  return routeMeta.role === user.role && routeMeta.beosztas === user.beosztas;
+};
+
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
 
   if(to.meta.requiresAuth) {
     const token = sessionStorage.getItem('token');
 
-    if(!token) {
-      next({name: 'Login'})
-      return
+    if(!token || !userStore.user) {
+      next({name: 'LoginPage'});
+      return;
     }
 
     const user = userStore.user;
-    if(!user) {
-      next({name: 'Login'})
-      return
-    }
+    const { role, beosztas } = to.meta;
 
-    if (to.meta.role === user.role && to.meta.beosztas === user.beosztas) {
-      // Ha megfelelő jogosultsága van, engedjük tovább
-      next()
+    if (!checkUserPermission(user, to.meta)) {
+      next({ path: '/' });
     } else {
-      // Ha nincs megfelelő jogosultsága, irányítsuk át a megfelelő oldalra
-      if (user.role === 'admin' && user.beosztas === 'orvos') {
-        next({ path: '/doctor/' })
-      } else if (user.role === 'admin' && user.beosztas === 'asszisztens') {
-        next({ path: '/assistant/' })
-      } else if (user.role === 'user' && user.beosztas === 'takarito') {
-        next({ path: '/cleaner/' })
-      } else {
-        // Ha nem ismert a jogosultság, irányítsuk a főoldalra vagy egy hibaoldalra
-        next({ path: '/' })
-      }
+      next();
     }
   } else {
-    // Ha az útvonal nem igényel hitelesítést, engedjük tovább
     next()
   }
 })

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 return [
 
     /*
@@ -40,6 +42,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'gazdi-api' => [
+            'driver' => 'sanctum',
+            'provider' => 'gazdik'
+        ],
+        'dolgozo-api' => [
+            'driver' => 'sanctum', 
+            'provider' => 'users'
+        ]
     ],
 
     /*
@@ -65,10 +75,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\Dolgozo::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'gazdik' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Gazdi::class,
+        ],
     ],
 
     /*
@@ -93,6 +103,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'gazdik' => [
+            'provider' => 'gazdik',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
