@@ -1,73 +1,67 @@
 <template>
   <BaseLayout>
-    <FormKit @submit="handleLogin" type="form" :actions="false" form-class="bg-white mx-auto w-3/12 mt-10 rounded rounded-xl"> 
+    <h1 class="text-3xl font-bold text-center my-10 text-[#FEFAE0]">
+      Belépés / Regisztráció
+    </h1>
 
-      <!--Email-->
-      <div class="pt-3">
-        <FormKit type="text" v-model="email" label="Email" label-class="text-xl text-black ml-3"
-          input-class="text-xl text-black ml-3 rounded w-10/12 border border-gray-500 p-2" placeholder="email@example.com"/>
+    <!-- Nagy div -->
+    <div class="max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- Bejelentkezés -->
+      <div class="border border-gray-300 bg-[#FEFAE0] p-6 rounded-xl shadow-sm">
+        <h2 class="text-2xl font-semibold text-center text-[#283618] mb-6">
+          Belépés
+        </h2>
+
+        <FormKit type="form" :actions="false" class="space-y-6">
+
+          <!-- Email input -->
+          <div class="my-2">
+            <FormKit type="email" label="E-mail" label-class="text-[#283618] text-2xl" placeholder="E-mail"
+              input-class="p-3 border border-gray-300 rounded-md w-full"/>
+          </div>
+
+          <!-- Jelszó input -->
+          <div class="my-2">
+            <FormKit type="password" label="Jelszó" label-class="text-[#283618] text-2xl" placeholder="Jelszó"
+              input-class="p-3 border border-gray-300 rounded-md w-full"/>
+          </div>
+
+          <!-- Gomb -->
+          <div class="flex justify-center">
+            <button type="submit" @click="handleLogin"
+              class="px-6 my-3 py-2 bg-[#283618] text-2xl text-[#FEFAE0] rounded-lg font-semibold">
+              Bejelentkezés
+            </button>
+          </div>
+        </FormKit>
       </div>
 
-      <!--Jelszó-->
-      <div class="pt-3">
-        <FormKit type="password" v-model="password" label="Jelszó" label-class="text-xl text-black ml-3"
-          input-class="text-xl text-black ml-3 rounded w-10/12 border border-gray-500 p-2" placeholder="Jelszó" />
-      </div>
+      <!-- Regisztráció -->
+      <div class="border p-6 rounded-xl border-gray-300 bg-[#FEFAE0] shadow-sm flex flex-col justify-center text-center">
+        <h2 class="text-2xl font-semibold text-[#283618] mb-4">
+          Regisztráció
+        </h2>
 
-      <!--Gomb-->
-      <div class="pt-2" ref="isUserLoggedIn">
-          <button type="submit" class="rounded bg-white text-black font-bold p-2 m-3 text-xl">Bejelentkezés</button>
-      </div>
+        <p class="mb-8 text-[#283618] text-xl">
+          Nincs még BuzzShop Webáruház regisztrációd?<br />
+          Kattints az alábbi gombra és regisztrálj!
+        </p>
 
-      
-    </FormKit>
-
-    <div v-if="error" class="mt-5 bg-red-400 p-4 text-center text-black w-3/12 mx-auto rounded-xl">
-        <h2>Hibás email vagy jelszó!</h2>
+        <div class="flex justify-center">
+          <RouterLink to="/register">
+            <button type="button"
+              class="px-6 py-2 bg-[#283618] text-[#FEFAE0] rounded-lg font-semibold hover:bg-sky-700 transition">
+              Regisztráció
+            </button>
+          </RouterLink>
+        </div>
       </div>
+    </div>
   </BaseLayout>
 </template>
 
 <script setup>
 // Importok
 import BaseLayout from '@layouts/BaseLayout.vue'
-import {ref} from 'vue';
-import {useUserStore} from '@stores/UserStore.js';
-import { useRouter } from 'vue-router';
-
-// Változók
-const userStore = useUserStore();
-const email = ref('');
-const password = ref('');
-const error = ref(null);
-const router = useRouter();
-
-
-async function handleLogin() {
-  error.value = null;
-  try{
-    const response = await userStore.authenticateUser(email.value, password.value);
-
-    const beosztas = userStore.user.beosztas;
-    const user = userStore.user;
-
-    console.log('Bejelentkezett felhasználó: ', userStore.user)
-    console.log('Token: ', sessionStorage.getItem('token'))
-
-    if(user.role === 'admin' && user.beosztas === 'orvos') {
-      console.log('Próbálok átirányítani a doktor oldalra...');
-      router.push('/doctor/');
-      console.log('átirányítás megtörtént')
-    } else if( user.role === 'admin' && user.beosztas === 'asszisztens') {
-      router.push('/assistant/');
-    } else if( user.role === 'user' && user.beosztas === 'takarito') {
-      router.push('/cleaner/');
-    }
-    console.log('Sikeres bejelentkezés!')
-
-  }catch(err){
-    console.log('Sikertelen bejelentkezés: ', err)
-    error.value = err;
-  }
-}
 </script>

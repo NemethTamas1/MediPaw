@@ -17,46 +17,10 @@ Route::apiResource("/gazdik", GazdiController::class);
 Route::apiResource("/rendelok", RendeloController::class);
 Route::apiResource("/dolgozok", DolgozoController::class);
 
-// Regisztráció és authentikáció
+// Regisztráció
 Route::post("/register/dolgozo", [RegisterController::class, "store"])->name("register.store");
 Route::post('/register/gazdi', [RegisterController::class, "storeGazdi"])->name('register.registerGazdi');
-Route::post("/authenticate", [AuthController::class, "authenticate"])->name("auth.authenticate");
 
-// Védett utak
-Route::middleware(['auth:sanctum'])->group(function () { 
-
-    // Doctor route
-    Route::get('/doctor/', function() {
-        if (Gate::allows('isDoctor', Auth::user())) {
-            return response()->json(['message' => 'Doctor page'], 200);
-        }
-
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-
-    // Assistant route
-    Route::get('/assistant/', function() {
-        if (Gate::allows('isAssistant', Auth::user()) && !Gate::allows('isDoctor', Auth::user())) {
-            return response()->json(['message' => 'Assistant page'], 200);
-        }
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-
-    // Cleaner route
-    Route::get('/cleaner/', function() {
-        if (Gate::allows('isCleaner', Auth::user())) {
-            return response()->json(['message' => 'Cleaner page'], 200);
-        }
-
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-
-    // Gazdi dashboard route
-    Route::get('/gazdi/dashboard', function() {
-        if(Gate::allows('isGazdi', Auth::user())){
-            return response()->json(['message'=>'Gazdi page'],200);
-        }
-
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-});
+// Autentikáció
+Route::post("/authenticate/dolgozo", [AuthController::class, "authenticateDolgozo"]);
+Route::post("/authenticate/gazdi", [AuthController::class, "authenticateGazdi"]);

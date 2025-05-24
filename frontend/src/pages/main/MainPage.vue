@@ -1,7 +1,7 @@
 <template>
     <BaseLayout>
         <header>
-            <p class="text-white text-3xl font-bold pt-4">Üdvözöljük a MediPaw vállalatirányítási rendszerében!</p>
+            <p class="text-white text-3xl font-bold pt-4 text-center mt-10 text-[#FEFAE0]">Üdvözöljük a MediPaw állatorvosi szakrendelő oldalán!</p>
         </header>
     </BaseLayout>
 </template>

@@ -10,33 +10,17 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function authenticate(AuthenticateRequest $request)
+
+    public function authenticateDolgozo(AuthenticateRequest $request)
     {
         $credentials = $request->validated();
         $email = $credentials['email'];
 
-        // Első próba gazdiként
-        $gazdi = Gazdi::where('email', $email)->first();
-
-        if ($gazdi && Hash::check($credentials['password'], $gazdi->password)) {
-            $token = $gazdi->createToken('auth_token')->plainTextToken;
-
-            return response()->json([
-                'token' => $token,
-                'user' => [
-                    'id' => $gazdi->id,
-                    'email' => $gazdi->email,
-                    'nev' => $gazdi->nev
-                ]
-            ]);
-        }
-
-
-        // Második próba dolgozóként
-        $dolgozo = Dolgozo::where('email', $credentials['email'])->first();
+        // Próbálkozás dolgozóként
+        $dolgozo = Dolgozo::where('email', $email)->first();
 
         if ($dolgozo && Hash::check($credentials['password'], $dolgozo->password)) {
-            $token = $dolgozo->createToken('auth_token')->plainTextToken;
+            $token = $dolgozo->createToken('dolgozo_token')->plainTextToken;
 
             return response()->json([
                 'token' => $token,
@@ -49,7 +33,34 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'message' => 'Sikertelen belépés'
+            'message' => 'Sikertelen belépés dolgozóként.'
         ], 401);
     }
+
+    public function authenticateGazdi(AuthenticateRequest $request)
+    {
+        $credentials = $request->validated();
+        $email = $credentials['email'];
+
+        // Próbálkozás gazdiként
+        $gazdi = Gazdi::where('email', $email)->first();
+
+        if ($gazdi && Hash::check($credentials['password'], $gazdi->password)) {
+            $token = $gazdi->createToken('gazdi_token')->plainTextToken;
+
+            return response()->json([
+                'token' => $token,
+                'user' => [
+                    'id' => $gazdi->id,
+                    'email' => $gazdi->email,
+                    'nev' => $gazdi->nev
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Sikertelen belépés gazdiként.'
+        ], 401);
+    }
+    
 }
