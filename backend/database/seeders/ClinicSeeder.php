@@ -6,21 +6,19 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TulajdonosSeeder extends Seeder
+class ClinicSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table("tulajdonos")->insert([
+        DB::table("clinics")->insert([
             [
-                "gazdi_id"=>1,
-                "allat_id"=>1
-            ],
-            [
-                "gazdi_id"=>2,
-                "allat_id"=>2
+                "id"=>1,
+                "name"=>"MediPaw",
+                "address"=>"Budapest, 1072, Arany János utca 12",
+                "openingHours"=>"8:00 - 20:00"
             ]
         ]);
     }

@@ -9,24 +9,24 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Sanctum\HasApiTokens;
 
-class Dolgozo extends Authenticatable
+class Worker extends Authenticatable
 {
     use HasFactory, HasApiTokens;
 
     public $timestamps = false;
-    protected $table = "dolgozok";
+    protected $table = "workers";
     protected $fillable = [
         "id",
         "name",
-        "telefon",
+        "phone",
         "role",
-        "beosztas",
+        "post",
         "email",
         "password",
     ];
 
-    public function rendelok():BelongsToMany {
-        return $this->belongsToMany(Rendelo::class, "dolgozik", "dolgozo_id", "rendelo_id");
+    public function clinics():BelongsToMany {
+        return $this->belongsToMany(Clinic::class, "working", "worker_id", "clinic_id");
     }
 
     protected function casts(): array
@@ -46,7 +46,7 @@ class Dolgozo extends Authenticatable
     public function getRole(){
         return $this->role;
     }
-    public function getBeosztas(){
-        return $this->beosztas;
+    public function getPost(){
+        return $this->post;
     }
 }

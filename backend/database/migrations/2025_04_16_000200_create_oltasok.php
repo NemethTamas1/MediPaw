@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('oltasok', function (Blueprint $table) {
+        Schema::create('cures', function (Blueprint $table) {
             $table->id(); // ez automatikusan unsigned big integer + auto increment + primary key
-            $table->string('oltasTipus');
+            $table->string('cureType');
         });
         
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oltasok');
+        Schema::dropIfExists('cures');
     }
 };

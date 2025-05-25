@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('oltas_allat', function (Blueprint $table) {
+        Schema::create('cure_animal', function (Blueprint $table) {
             $table->id();
 
-            //"oltas_id" mező
-            $table->unsignedBigInteger("oltas_id");
-            $table->foreign("oltas_id")->references("id")->on("oltasok")->onDelete("cascade");
+            //"cure_id" mező
+            $table->unsignedBigInteger("cure_id");
+            $table->foreign("cure_id")->references("id")->on("cures")->onDelete("cascade");
 
-            //"allat_id" mező
-            $table->unsignedBigInteger("allat_id");
-            $table->foreign("allat_id")->references("id")->on("allatok")->onDelete("cascade");
+            //"animal_id" mező
+            $table->unsignedBigInteger("animal_id");
+            $table->foreign("animal_id")->references("id")->on("animals")->onDelete("cascade");
 
-            $table->string("datum", 100);
+            $table->string("date", 100);
         });
     }
 

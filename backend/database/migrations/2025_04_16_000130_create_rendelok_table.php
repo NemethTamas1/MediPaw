@@ -11,25 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rendelok', function (Blueprint $table) {
+        Schema::create('clinics', function (Blueprint $table) {
             $table->id();
-            
-            //"dolgozo_id" mező
-            $table->unsignedBigInteger("dolgozo_id")->nullable();
-            $table->foreign("dolgozo_id")->references("id")->on("dolgozok");
+            $table->string("name");
 
-            //"allat_id" mező
-            $table->unsignedBigInteger("allat_id")->nullable();
-            $table->foreign("allat_id")->references("id")->on("allatok");
-
-            //"gazdi_id" mező
-            $table->unsignedBigInteger("gazdi_id");
-            $table->foreign("gazdi_id")->references("id")->on("gazdik");
-
-
-
-            $table->string("cim", 100);
-            $table->string("nyitvatartas", 255);
+            $table->string("address", 100);
+            $table->string("openingHours", 255);
         });
     }
 
@@ -38,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rendelok');
+        Schema::dropIfExists('clinics');
     }
 };

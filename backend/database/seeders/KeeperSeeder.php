@@ -6,21 +6,21 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class OltasSeeder extends Seeder
+class KeeperSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table("oltasok")->insert([
+        DB::table("keepers")->insert([
             [
-                "id"=>1,
-                "oltasTipus"=>"Tipus1"
+                "owner_id"=>1,
+                "animal_id"=>1
             ],
             [
-                "id"=>2,
-                "oltasTipus"=>"Tipus2"
+                "owner_id"=>2,
+                "animal_id"=>2
             ]
         ]);
     }

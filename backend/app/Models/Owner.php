@@ -7,32 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
-class Gazdi extends Model
+class Owner extends Model
 {
     use HasFactory, HasApiTokens;
 
     public $timestamps = false;
-    protected $table = "gazdik";
+    protected $table = "owners";
     protected $fillable = [
         "id",
-        "nev",
-        "cim",
-        "telefon",
+        "name",
+        "address",
+        "phone",
         "email",
         "password"
     ];
 
-    public function allatok():HasMany{
-        return $this->hasMany(Allat::class, "gazdi_id", "id");
+    public function animals():HasMany{
+        return $this->hasMany(Animal::class, "owner_id", "id");
     }
     protected $hidden = [
         'password'
     ];
 
     public function getRole(){
-        return "gazdi";
+        return "owner";
     }
-    public function getBeosztas(){
+    public function getPost(){
         return null;
     }
 }

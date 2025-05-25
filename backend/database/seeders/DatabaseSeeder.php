@@ -14,17 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(AllatSeeder::class);
-        $this->call(GazdiSeeder::class);
-        $this->call(DolgozokSeeder::class);
-        $this->call(RendeloSeeder::class);
-        $this->call(KezelesSeeder::class);
-        $this->call(TulajdonosSeeder::class);
-        $this->call(DolgozikSeeder::class);
-        $this->call(OltasSeeder::class);
-        $this->call(Oltas_AllatSeeder::class);
+        $this->call(AnimalSeeder::class);
+        $this->call(OwnerSeeder::class);
+        $this->call(WorkersSeeder::class);
+        $this->call(ClinicSeeder::class);
+        $this->call(TreatmentSeeder::class);
+        $this->call(KeeperSeeder::class);
+        $this->call(WorkingSeeder::class);
+        $this->call(CureSeeder::class);
+        $this->call(Cure_AnimalSeeder::class);
     }
 }
-
-//Admin: 1|MjBtWCT5oSfIBTk8Ebt9Mq2rEsvlKMCOrVAMsqas8fe72cb3
-//Test: 2|LUhP8BltLhSRf2fUWDHqfY81mGSjF3q8rvHQFhKY3aa4c164
