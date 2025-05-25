@@ -41,4 +41,12 @@ class Dolgozo extends Authenticatable
     'password',
     'remember_token',
     ];
+
+
+    public function getRole(){
+        return $this->role;
+    }
+    public function getBeosztas(){
+        return $this->beosztas;
+    }
 }

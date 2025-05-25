@@ -1,6 +1,6 @@
 <template>
     <BaseLayout>
-        <h1>Gazdi dashboard</h1>
+        <h1 class="text-white">Gazdi dashboard</h1>
     </BaseLayout>
 </template>
 

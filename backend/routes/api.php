@@ -6,13 +6,14 @@ use App\Http\Controllers\DolgozoController;
 use App\Http\Controllers\GazdiController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RendeloController;
+use App\Http\Middleware\RoleMiddleware;
 use App\Http\Requests\RegisterGazdiRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
-// API resource végpontok
-Route::apiResource("/allatok", AllatController::class); 
+// Nyílvános API resource végpontok
+Route::apiResource("/allatok", AllatController::class);
 Route::apiResource("/gazdik", GazdiController::class);
 Route::apiResource("/rendelok", RendeloController::class);
 Route::apiResource("/dolgozok", DolgozoController::class);
@@ -22,41 +23,15 @@ Route::post("/register/dolgozo", [RegisterController::class, "store"])->name("re
 Route::post('/register/gazdi', [RegisterController::class, "storeGazdi"])->name('register.registerGazdi');
 Route::post("/authenticate", [AuthController::class, "authenticate"])->name("auth.authenticate");
 
-// Védett utak
-Route::middleware(['auth:sanctum'])->group(function () { 
+// Szerepkör alapú védett útvonalak
+Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin:orvos'])
+    ->get('/doctor', fn() => response()->json(['message' => 'Doctor page']));
 
-    // Doctor route
-    Route::get('/doctor/', function() {
-        if (Gate::allows('isDoctor', Auth::user())) {
-            return response()->json(['message' => 'Doctor page'], 200);
-        }
+Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin:asszisztens'])
+    ->get('/assistant', fn() => response()->json(['message' => 'Assistant page']));
 
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
+Route::middleware(['auth:sanctum', RoleMiddleware::class . ':user:takarito'])
+    ->get('/cleaner', fn() => response()->json(['message' => 'Cleaner page']));
 
-    // Assistant route
-    Route::get('/assistant/', function() {
-        if (Gate::allows('isAssistant', Auth::user()) && !Gate::allows('isDoctor', Auth::user())) {
-            return response()->json(['message' => 'Assistant page'], 200);
-        }
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-
-    // Cleaner route
-    Route::get('/cleaner/', function() {
-        if (Gate::allows('isCleaner', Auth::user())) {
-            return response()->json(['message' => 'Cleaner page'], 200);
-        }
-
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-
-    // Gazdi dashboard route
-    Route::get('/gazdi/dashboard', function() {
-        if(Gate::allows('isGazdi', Auth::user())){
-            return response()->json(['message'=>'Gazdi page'],200);
-        }
-
-        return response()->json(['message' => 'Unauthorized'], 403);
-    });
-});
+Route::middleware(['auth:sanctum', RoleMiddleware::class . ':gazdi'])
+    ->get('/gazdi/dashboard', fn() => response()->json(['message' => 'Gazdi page']));

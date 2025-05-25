@@ -28,4 +28,11 @@ class Gazdi extends Model
     protected $hidden = [
         'password'
     ];
+
+    public function getRole(){
+        return "gazdi";
+    }
+    public function getBeosztas(){
+        return null;
+    }
 }

@@ -1,6 +1,7 @@
 <template>
     <BaseLayout>
         <h1 class="font-bold text-3xl text-white pt-3">Üdvözöljük, {{ userName }}!</h1>
+        <h1 class="text-white">Cleaner main page</h1>
     </BaseLayout>
 </template>
 

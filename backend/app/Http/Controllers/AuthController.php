@@ -8,6 +8,8 @@ use App\Models\Gazdi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use function Laravel\Prompts\alert;
+
 class AuthController extends Controller
 {
     public function authenticate(AuthenticateRequest $request)
@@ -17,7 +19,6 @@ class AuthController extends Controller
 
         // Első próba gazdiként
         $gazdi = Gazdi::where('email', $email)->first();
-
         if ($gazdi && Hash::check($credentials['password'], $gazdi->password)) {
             $token = $gazdi->createToken('auth_token')->plainTextToken;
 
@@ -26,7 +27,9 @@ class AuthController extends Controller
                 'user' => [
                     'id' => $gazdi->id,
                     'email' => $gazdi->email,
-                    'nev' => $gazdi->nev
+                    'nev' => $gazdi->nev,
+                    'role' => 'gazdi',
+                    'beosztas' => null
                 ]
             ]);
         }
@@ -34,7 +37,6 @@ class AuthController extends Controller
 
         // Második próba dolgozóként
         $dolgozo = Dolgozo::where('email', $credentials['email'])->first();
-
         if ($dolgozo && Hash::check($credentials['password'], $dolgozo->password)) {
             $token = $dolgozo->createToken('auth_token')->plainTextToken;
 

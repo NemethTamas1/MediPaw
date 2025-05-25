@@ -1,11 +1,13 @@
 <template>
   <BaseLayout>
-    <FormKit @submit="handleLogin" type="form" :actions="false" form-class="bg-white mx-auto w-3/12 mt-10 rounded rounded-xl"> 
+    <FormKit @submit="handleLogin" type="form" :actions="false"
+      form-class="bg-white mx-auto w-3/12 mt-10 rounded rounded-xl">
 
       <!--Email-->
       <div class="pt-3">
         <FormKit type="text" v-model="email" label="Email" label-class="text-xl text-black ml-3"
-          input-class="text-xl text-black ml-3 rounded w-10/12 border border-gray-500 p-2" placeholder="email@example.com"/>
+          input-class="text-xl text-black ml-3 rounded w-10/12 border border-gray-500 p-2"
+          placeholder="email@example.com" />
       </div>
 
       <!--Jelszó-->
@@ -16,23 +18,26 @@
 
       <!--Gomb-->
       <div class="pt-2" ref="isUserLoggedIn">
-          <button type="submit" class="rounded bg-white text-black font-bold p-2 m-3 text-xl">Bejelentkezés</button>
+        <button type="submit"
+          class="rounded bg-white text-black border border-black font-bold p-2 m-3 text-xl">Bejelentkezés</button>
       </div>
 
-      
+      <p><a href="/registration">Nincs még MediPaw fiókja? Regisztráljon itt!</a></p>
+
+
     </FormKit>
 
     <div v-if="error" class="mt-5 bg-red-400 p-4 text-center text-black w-3/12 mx-auto rounded-xl">
-        <h2>Hibás email vagy jelszó!</h2>
-      </div>
+      <h2>Hibás email vagy jelszó!</h2>
+    </div>
   </BaseLayout>
 </template>
 
 <script setup>
 // Importok
 import BaseLayout from '@layouts/BaseLayout.vue'
-import {ref} from 'vue';
-import {useUserStore} from '@stores/UserStore.js';
+import { ref } from 'vue';
+import { useUserStore } from '@stores/UserStore.js';
 import { useRouter } from 'vue-router';
 
 // Változók
@@ -42,32 +47,43 @@ const password = ref('');
 const error = ref(null);
 const router = useRouter();
 
+const redirectUser = (user) => {
+  if (user.role === 'gazdi') {
+    router.push('/gazdi/dashboard');
+  } else if (user.role === 'admin' && user.beosztas === 'orvos') {
+    router.push('/doctor');
+  } else if (user.role === 'admin' && user.beosztas === 'asszisztens') {
+    router.push('/assistant');
+  } else if (user.role === 'user' && user.beosztas === 'takarito') {
+    router.push('/cleaner');
+  } else {
+    router.push('/');
+  }
+
+  console.log('[DEBUG] user:', user)
+  console.log('[DEBUG] role:', user.role)
+  console.log('[DEBUG] beosztas:', user.beosztas)
+
+};
+
 
 async function handleLogin() {
   error.value = null;
-  try{
-    const response = await userStore.authenticateUser(email.value, password.value);
+  try {
+    await userStore.authenticateUser(email.value, password.value);
 
-    const beosztas = userStore.user.beosztas;
+    console.log("userId in sessionStorage:", sessionStorage.getItem('userId'));
+
+    const userId = sessionStorage.getItem('userId');
+    await userStore.getOneUser(userId);
+    
     const user = userStore.user;
+    redirectUser(user);
 
-    console.log('Bejelentkezett felhasználó: ', userStore.user)
-    console.log('Token: ', sessionStorage.getItem('token'))
-
-    if(user.role === 'admin' && user.beosztas === 'orvos') {
-      console.log('Próbálok átirányítani a doktor oldalra...');
-      router.push('/doctor/');
-      console.log('átirányítás megtörtént')
-    } else if( user.role === 'admin' && user.beosztas === 'asszisztens') {
-      router.push('/assistant/');
-    } else if( user.role === 'user' && user.beosztas === 'takarito') {
-      router.push('/cleaner/');
-    }
-    console.log('Sikeres bejelentkezés!')
-
-  }catch(err){
-    console.log('Sikertelen bejelentkezés: ', err)
+  } catch (err) {
+    console.log('Sikertelen bejelentkezés: ', err);
     error.value = err;
   }
 }
+
 </script>

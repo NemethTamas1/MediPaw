@@ -22,7 +22,6 @@ class StoreGazdiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "id"=>["integer", "required", "min:0"],
             "nev"=>["required", "string", "max:100"],
             "cim"=>["required", "string", "max:255"],
             "telefon"=>["required", "string", "min:0"],

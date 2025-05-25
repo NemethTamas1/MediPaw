@@ -60,6 +60,11 @@ const routes = [
     meta:{
       requiresAuth: true
     }
+  },
+  {
+    path: '/registration',
+    name: 'RegistrationSite',
+    component: () => import('@pages/main/RegistrationSite.vue')
   }
 ]
 
@@ -88,7 +93,14 @@ router.beforeEach((to, from, next) => {
     }
 
     const user = userStore.user;
-    const { role, beosztas } = to.meta;
+
+    console.log('USER DEBUG: ', {
+      user,
+      requiedRole: to.meta.beosztas,
+      requiredBeosztas: to.meta.beosztas
+    });
+
+    
 
     if (!checkUserPermission(user, to.meta)) {
       next({ path: '/' });
