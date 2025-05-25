@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterGazdiRequest extends FormRequest
+class UpdateClinicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,10 @@ class RegisterGazdiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'=>["required", "integer", "min:0"],
-            'nev'=>["required", "string", "min:0"],
-            'cim'=>["required", "string"],
-            'telefon'=>["required", "string", "min:0"],
-            'email'=>["required", "string", "email:rfc"],
-            'password'=>["required", "string", "min:8"],
+            "id"=>["required", "integer", "min:0"],
+            "name"=>["required", "string"],
+            "address"=>["required", "string", "max:255"],
+            "openingHours"=>["required", "string", "max:255"],
         ];
     }
 }

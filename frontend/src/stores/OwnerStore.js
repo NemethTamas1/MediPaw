@@ -1,14 +1,14 @@
 import {defineStore} from 'pinia';
 import {http} from '@utils/http';
 
-export const useGazdiStore = defineStore('gazdik', {
+export const useOwnerStore = defineStore('gazdik', {
     state:()=>({
-        gazdik:[]
+        owners:[]
     }),
     actions:{
 
-        async postGazdi(data){
-            const response = await http.post('/gazdik', data);
+        async postOwner(data){
+            const response = await http.post('/owners', data);
             return response.data.data;
         }
     }

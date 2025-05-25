@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dolgozik;
+use App\Models\Working;
 use Illuminate\Http\Request;
 
-class DolgozikController extends Controller
+class WorkingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class DolgozikController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dolgozik $dolgozik)
+    public function show(Working $dolgozik)
     {
         //
     }
@@ -34,7 +35,7 @@ class DolgozikController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dolgozik $dolgozik)
+    public function update(Request $request, Working $dolgozik)
     {
         //
     }
@@ -42,7 +43,7 @@ class DolgozikController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dolgozik $dolgozik)
+    public function destroy(Working $dolgozik)
     {
         //
     }

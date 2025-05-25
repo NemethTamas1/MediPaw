@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDolgozoRequest extends FormRequest
+class RegisterWorkerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,12 @@ class UpdateDolgozoRequest extends FormRequest
     {
         return [
             "id"=>["required", "integer", "min:0"],
-            "nev"=>["required", "string", "min:0", "max:255"],
-            "telefon"=>["required", "string", "min:0", "max:100"],
-            "role"=>["required", "string", "in:admin,user"],
-            "beosztas"=>["required", "string", "in:orvos,takarito,asszisztens"],
-            "email"=>["required", "string", "email:rfc"],
+            "name"=>["required", "string", "max:255"],
+            "email"=>["required", "string", "email:rfc", "unique:workers"],
             "password"=>["required", "string", "min:8"],
+            "telefon"=>["required", "string", "min:0", "max:100"],
+            "role"=>["required", "string", "in:user,admin"],
+            "post"=>["required", "string", "in:doctor,assistant"],
         ];
     }
 }

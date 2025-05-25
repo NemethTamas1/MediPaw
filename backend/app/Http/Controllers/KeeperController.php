@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tulajdonos;
+use App\Models\Keep;
 use Illuminate\Http\Request;
 
-class TulajdonosController extends Controller
+class KeeperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class TulajdonosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tulajdonos $tulajdonos)
+    public function show(Keep $tulajdonos)
     {
         //
     }
@@ -34,7 +34,7 @@ class TulajdonosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tulajdonos $tulajdonos)
+    public function update(Request $request, Keep $tulajdonos)
     {
         //
     }
@@ -42,7 +42,7 @@ class TulajdonosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tulajdonos $tulajdonos)
+    public function destroy(Keep $tulajdonos)
     {
         //
     }

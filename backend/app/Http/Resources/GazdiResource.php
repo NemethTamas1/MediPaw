@@ -16,9 +16,9 @@ class GazdiResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "nev"=>$this->nev,
-            "cim"=>$this->cim,
-            "telefon"=>$this->telefon,
+            "name"=>$this->name,
+            "address"=>$this->address,
+            "phone"=>$this->phone,
             "email"=>$this->email
         ];
     }

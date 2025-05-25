@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClinicRequest;
 use App\Http\Requests\StoreRendeloRequest;
+use App\Http\Requests\UpdateClinicRequest;
 use App\Http\Requests\UpdateRendeloRequest;
 use App\Http\Resources\RendeloResource;
-use App\Models\Rendelo;
+use App\Models\Clinic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use function Termwind\render;
 
-class RendeloController extends Controller
+class ClinicController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Rendelo::with(["dolgozok", "allatok"])->get();
+        $data = Clinic::with(["dolgozok", "allatok"])->get();
 
         return RendeloResource::collection($data);
     }
@@ -25,13 +27,13 @@ class RendeloController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRendeloRequest $request)
+    public function store(StoreClinicRequest $request)
     {
         $data = $request->validated();
 
-        $ujRendelo = Rendelo::create($data);
+        $ujRendelo = Clinic::create($data);
 
-        $rendelo = Rendelo::with(["dolgozok", "allatok"])->findOrFail($ujRendelo->id);
+        $rendelo = Clinic::with(["dolgozok", "allatok"])->findOrFail($ujRendelo->id);
 
         return new RendeloResource($rendelo);
     }
@@ -41,7 +43,7 @@ class RendeloController extends Controller
      */
     public function show($id)
     {
-        $rendelo = Rendelo::with(["dolgozok", "allatok"])->findOrFail($id);
+        $rendelo = Clinic::with(["dolgozok", "allatok"])->findOrFail($id);
 
         return new RendeloResource($rendelo);
     }
@@ -49,11 +51,11 @@ class RendeloController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRendeloRequest $request, $id)
+    public function update(UpdateClinicRequest $request, $id)
     {
         $beerkezoData = $request->validated();
 
-        $regiRendelo = Rendelo::findOrFail($id);
+        $regiRendelo = Clinic::findOrFail($id);
 
         $regiRendelo->update($beerkezoData);
 
@@ -65,7 +67,7 @@ class RendeloController extends Controller
      */
     public function destroy($id)
     {
-        $rendelo = Rendelo::findOrFail($id);
+        $rendelo = Clinic::findOrFail($id);
 
         return ($rendelo->delete()) ? response()->noContent() : abort(500);
     }

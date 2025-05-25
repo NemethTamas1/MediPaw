@@ -6,7 +6,7 @@ use App\Models\Allat;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class StoreAllatRequest extends FormRequest
+class StoreAnimalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,11 +30,11 @@ class StoreAllatRequest extends FormRequest
     {
         return [
             "id"=>["integer", "required", "min:0"],
-            "nev"=>["string", "max:100"],
-            "kor"=>["integer", "min:0", "max:25"],
-            "fajta"=>["required", "string", "min:0"],
-            "szin"=>["required", "string", "max:100"],
-            "suly"=>["required", "numeric", "min:0"],
+            "name"=>["string", "max:100"],
+            "age"=>["integer", "min:0", "max:25"],
+            "breed"=>["required", "string", "min:0"],
+            "colour"=>["required", "string", "max:100"],
+            "weight"=>["required", "numeric", "min:0"],
         ];
     }
 }

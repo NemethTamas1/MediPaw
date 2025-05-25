@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AllatResource extends JsonResource
+class AnimalResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,11 @@ class AllatResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "nev"=>$this->nev,
-            "kor"=>$this->kor,
-            "fajta"=>$this->fajta,
-            "szin"=>$this->szin,
-            "suly"=>$this->suly . " kg",
+            "name"=>$this->name,
+            "age"=>$this->age,
+            "breed"=>$this->breed,
+            "colour"=>$this->colour,
+            "weight"=>$this->weight . " kg",
 
             //Kérdés, hogy a leírást vissza kell-e adni.
             //Továbbá kérdés, hogy a rendelőt vissza kell-e adni ahol az állatot ellátták.

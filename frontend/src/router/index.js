@@ -1,4 +1,3 @@
-import { componentSymbol } from '@formkit/vue';
 import { useUserStore } from '@stores/UserStore';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -6,17 +5,17 @@ const routes = [
   {
     path: '/',
     name: 'MainPage',
-    component: () => import('@pages/main/MainPage.vue')
+    component: () => import('@pages/MainPage.vue')
   },
   {
     path: '/login',
     name: 'LoginPage',
-    component: () => import('@pages/main/LoginSite.vue')
+    component: () => import('@pages/LoginSite.vue')
   },
   {
     path: '/doctor/',
     name: 'Doctor',
-    component: () => import('@pages/main/DoctorMainPage.vue'),
+    component: () => import('@pages/DoctorMainPage.vue'),
     meta: {
       requiresAuth: true,
       role: 'admin',
@@ -26,7 +25,7 @@ const routes = [
   {
     path: '/assistant/',
     name: 'Assistant',
-    component: () => import('@pages/main/AssistantMainPage.vue'),
+    component: () => import('@pages/AssistantMainPage.vue'),
     meta: {
       requiresAuth: true,
       role: 'admin',
@@ -36,7 +35,7 @@ const routes = [
   {
     path: '/cleaner/',
     name: 'Cleaner',
-    component: () => import('@pages/main/CleanerMainPage.vue'),
+    component: () => import('@pages/CleanerMainPage.vue'),
     meta: {
       requiresAuth: true,
       role: 'user',
@@ -44,19 +43,9 @@ const routes = [
     }
   },
   {
-    path: '/rendelo/:id',
-    name: 'RendeloMain',
-    component: () => import('@pages/main/[id]/RendeloMain.vue'),
-    meta:{
-      requiresAuth: true,
-      role: 'admin',
-      beosztas: 'orvos'
-    }
-  },
-  {
-    path: '/gazdi/dashboard',
-    name: 'GazdiDashboard',
-    component: () => import('@pages/main/GazdiDashboard.vue'),
+    path: '/owner/dashboard',
+    name: 'OwnerDashboard',
+    component: () => import('@pages/OwnerDashboard.vue'),
     meta:{
       requiresAuth: true
     }
@@ -64,7 +53,7 @@ const routes = [
   {
     path: '/registration',
     name: 'RegistrationSite',
-    component: () => import('@pages/main/RegistrationSite.vue')
+    component: () => import('@pages/RegistrationSite.vue')
   }
 ]
 

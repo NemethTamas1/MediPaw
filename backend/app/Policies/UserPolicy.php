@@ -1,28 +1,22 @@
 <?php
 
 namespace App\Policies;
-
-use App\Models\Dolgozo;
-use Illuminate\Support\Facades\Gate;
-use Laravel\Pail\ValueObjects\Origin\Console;
+use App\Models\Worker;
 
 class UserPolicy
 {
-
-
-
-    public function isDoctor(Dolgozo $dolgozo)
+    public function isDoctor(Worker $worker)
     {
-        return "admin" == $dolgozo->role && 'orvos' == $dolgozo->beosztas;
+        return "admin" == $worker->role && 'doctor' == $worker->post;
     }
 
-    public function isAssistant(Dolgozo $dolgozo)
+    public function isAssistant(Worker $worker)
     {
-        return "admin" == $dolgozo->role && 'asszisztens' == $dolgozo->beosztas;
+        return "admin" == $worker->role && 'assistant' == $worker->post;
     }
 
-    public function isCleaner(Dolgozo $dolgozo)
+    public function isCleaner(Worker $worker)
     {
-        return "user" == $dolgozo->role && 'takarito' == $dolgozo->beosztas;
+        return "user" == $worker->role && 'cleaner' == $worker->post;
     }
 }

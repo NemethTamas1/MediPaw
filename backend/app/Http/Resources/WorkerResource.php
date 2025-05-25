@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DolgozoResource extends JsonResource
+class WorkerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,11 @@ class DolgozoResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "nev"=>$this->name,
-            "telefon"=>$this->telefon,
+            "name"=>$this->name,
+            "phone"=>$this->phone,
             "email"=>$this->email,
             "role"=>$this->role,
-            "beosztas"=>$this->beosztas
+            "post"=>$this->post
         ];
     }
 }

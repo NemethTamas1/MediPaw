@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDolgozoRequest extends FormRequest
+class UpdateAnimalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,12 @@ class StoreDolgozoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "id"=>["required", "integer", "min:0"],
-            "name"=>["required", "string", "min:0", "max:255"],
-            "telefon"=>["required", "string", "min:0", "max:100"],
-            "role"=>["required", "string", "in:admin,user"],
-            "beosztas"=>["required", "string", "in:orvos,takarito,asszisztens"],
-            "email"=>["required", "string", "email:rfc"],
-            "password"=>["required", "string", "min:8"],
+            "id"=>["integer", "required", "min:0"],
+            "name"=>["string", "max:100"],
+            "age"=>["integer", "min:0", "max:25"],
+            "breed"=>["required", "string", "min:0"],
+            "colour"=>["required", "string", "max:100"],
+            "weight"=>["required", "numeric", "min:0"],
         ];
     }
 }

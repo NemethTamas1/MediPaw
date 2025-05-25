@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateKezelesRequest extends FormRequest
+class RegisterOwnerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,11 @@ class UpdateKezelesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "id"=>["integer", "min:0"],
-            "orvos_id"=>["integer", "min:0", "exists:dolgozok,id"],
-            "rendelo_id"=>["integer", "min:0", "exists:rendelok,id"],
-            "leiras"=>["string", "max:255", "nullable"],
-            "idopont"=>["date", "nullable"],
-            "kifizetve"=>["boolean"],
-            "allat_id"=>["integer", "min:0", "exists:allatok,id"]
-
-            //Jó a date? Vagy dateTime?
+            'name'=>["required", "string", "min:0"],
+            'address'=>["required", "string"],
+            'phone'=>["required", "string", "min:0"],
+            'email'=>["required", "string", "email:rfc"],
+            'password'=>["required", "string", "min:8"],
         ];
     }
 }

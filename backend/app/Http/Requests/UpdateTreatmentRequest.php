@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGazdiRequest extends FormRequest
+class UpdateTreatmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,15 @@ class UpdateGazdiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "nev"=>["required", "string", "max:100"],
-            "cim"=>["required", "string", "max:255"],
-            "telefon"=>["required", "string", "min:0"],
-            "email"=>["required", "email:rfc"],
-            "password"=>["required", "string", "min:8"]
+            "id"=>["integer", "min:0"],
+            "worker_id"=>["integer", "min:0", "exists:workers,id"],
+            "clinic_id"=>["integer", "min:0", "exists:clinics,id"],
+            "description"=>["string", "max:255", "nullable"],
+            "date"=>["date", "nullable"],
+            "paid"=>["boolean"],
+            "animal_id"=>["integer", "min:0", "exists:animals,id"]
 
+            //Jó a date? Vagy dateTime?
         ];
     }
 }

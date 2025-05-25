@@ -3,32 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDolgozoRequest;
+use App\Http\Requests\StoreWorkerRequest;
 use App\Http\Resources\DolgozoResource;
-use App\Models\Dolgozo;
+use App\Http\Resources\WorkerResource;
+use App\Models\Worker;
 use Illuminate\Http\Request;
 
-class DolgozoController extends Controller
+class WorkerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Dolgozo::all();
+        $data = Worker::all();
 
-        return DolgozoResource::collection($data);
+        return WorkerResource::collection($data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDolgozoRequest $request)
+    public function store(StoreWorkerRequest $request)
     {
         $data = $request->validated();
 
-        $ujDolgozo = Dolgozo::create($data);
+        $ujDolgozo = Worker::create($data);
 
-        return new DolgozoResource($ujDolgozo);
+        return new WorkerResource($ujDolgozo);
     }
 
     /**
@@ -36,9 +38,9 @@ class DolgozoController extends Controller
      */
     public function show($id)
     {
-        $dolgozo = Dolgozo::findOrFail($id);
+        $dolgozo = Worker::findOrFail($id);
 
-        return new DolgozoResource($dolgozo);
+        return new WorkerResource($dolgozo);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRendeloRequest extends FormRequest
+class UpdateWorkerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,12 @@ class StoreRendeloRequest extends FormRequest
     {
         return [
             "id"=>["required", "integer", "min:0"],
-            "allat_id"=>["required","integer", "min:0", "exists:allatok,id"],
-            "gazdi_id"=>["required","integer", "min:0", "exists:gazdik,id"],
-            "dolgozo_id"=>["required","integer", "min:0", "exists:dolgozok,id"],
-            "cim"=>["required", "string", "max:255"],
-            "nyitvatartas"=>["required", "string", "max:255"],
+            "name"=>["required", "string", "min:0", "max:255"],
+            "phone"=>["required", "string", "min:0", "max:100"],
+            "role"=>["required", "string", "in:admin,user"],
+            "post"=>["required", "string", "in:orvos,takarito,asszisztens"],
+            "email"=>["required", "string", "email:rfc"],
+            "password"=>["required", "string", "min:8"],
         ];
     }
 }

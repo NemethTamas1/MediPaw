@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreKezelesRequest;
+use App\Http\Requests\StoreTreatmentRequest;
 use App\Http\Requests\UpdateKezelesRequest;
+use App\Http\Requests\UpdateTreatmentRequest;
 use App\Http\Resources\KezelesResource;
-use App\Http\Resources\TartozkodikResource;
-use App\Models\Kezeles;
+use App\Models\Treatment;
 use Illuminate\Http\Request;
 
-class KezelesController extends Controller
+class TreatmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Kezeles::all();
+        $data = Treatment::all();
 
         return KezelesResource::collection($data);
     }
@@ -24,11 +25,11 @@ class KezelesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKezelesRequest $request)
+    public function store(StoreTreatmentRequest $request)
     {
         $data = $request->validated();
 
-        $ujTartozkodas = Kezeles::create($data);
+        $ujTartozkodas = Treatment::create($data);
 
         return new KezelesResource($ujTartozkodas);
     }
@@ -38,7 +39,7 @@ class KezelesController extends Controller
      */
     public function show($id)
     {
-        $keresett = Kezeles::findOrFail($id);
+        $keresett = Treatment::findOrFail($id);
 
         return new KezelesResource($keresett);
     }
@@ -46,17 +47,17 @@ class KezelesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKezelesRequest $request, $id)
+    public function update(UpdateTreatmentRequest $request, $id)
     {
         //Data validálás
         $ujData = $request->validated();
 
         //Frissítés
-        $regiTartozkodas = Kezeles::findOrFail($id);
+        $regiTartozkodas = Treatment::findOrFail($id);
         $regiTartozkodas->update($ujData);
 
         //Új visszaadása
-        $ujTartozkodas = Kezeles::findOrFail($id);
+        $ujTartozkodas = Treatment::findOrFail($id);
         return new KezelesResource($ujTartozkodas);
     }
 
@@ -65,7 +66,7 @@ class KezelesController extends Controller
      */
     public function destroy($id)
     {
-        $kezeles = Kezeles::findOrFail($id);
+        $kezeles = Treatment::findOrFail($id);
 
         return ($kezeles->delete()) ? response()->noContent() : abort(500);
     }
