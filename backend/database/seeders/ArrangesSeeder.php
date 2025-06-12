@@ -6,21 +6,23 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class WorkingSeeder extends Seeder
+class ArrangesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table("working")->insert([
+        DB::table("arranges")->insert([
             [
-                "clinic_id"=>1,
-                "worker_id"=>1
+                "animal_id" => 1,
+                "price" => 15000,
+                "description" => "Első leírás"
             ],
             [
-                "clinic_id"=>1,
-                "worker_id"=>2
+                "animal_id" => 2,
+                "price" => 6000,
+                "description" => "Második leírás"
             ]
         ]);
     }

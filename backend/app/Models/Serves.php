@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Working extends Model
+class Serves extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = "working";
+    protected $table = "keepers";
 
     protected $fillable = [
-        "clinic_id",
-        "worker_id",
+        'keeper_id',
+        'user_id'
     ];
+
+    
 }

@@ -16,23 +16,13 @@ class TreatmentSeeder extends Seeder
     {
         DB::table("treatments")->insert([
             [
-                "id"=>1,
-                "description"=>"TesztLeiras1",
-                "animal_id"=>1,
-                "date"=>"8:00 - 20:00",
-                "clinic_id"=>1,
-                "paid"=>false,
-                "worker_id"=>1
+                "treatmentType"=>"Oltás",
+                "date"=>"2025.06.12",
             ],
             [
-                "id"=>2,
-                "description"=>"TesztLeiras2",
-                "animal_id"=>2,
-                "date"=> "10:00 - 18:00",
-                "clinic_id"=>1,
-                "paid"=>false,
-                "worker_id"=>2
-            ]
+                "treatmentType"=>"Műtét",
+                "date"=>"2025.06.12",
+            ],
         ]);
     }
 }

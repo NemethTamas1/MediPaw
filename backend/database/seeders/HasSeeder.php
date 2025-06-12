@@ -6,19 +6,21 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ClinicSeeder extends Seeder
+class HasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table("clinics")->insert([
+        DB::table("has")->insert([
             [
-                "id"=>1,
-                "name"=>"MediPaw",
-                "address"=>"Budapest, 1072, Arany János utca 12",
-                "openingHours"=>"8:00 - 20:00"
+                "animal_id" => 1,
+                "keeper_id" => 1
+            ],
+            [
+                "animal_id" => 2,
+                "keeper_id" => 2
             ]
         ]);
     }

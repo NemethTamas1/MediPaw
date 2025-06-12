@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\App;
 
 return [
@@ -42,14 +43,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'gazdi-api' => [
-            'driver' => 'sanctum',
-            'provider' => 'gazdik'
-        ],
-        'dolgozo-api' => [
-            'driver' => 'sanctum', 
-            'provider' => 'users'
-        ]
     ],
 
     /*
@@ -72,12 +65,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\Dolgozo::class),
-        ],
-
-        'gazdik' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Gazdi::class,
+            'model' => env('AUTH_MODEL', User::class),
         ],
     ],
 

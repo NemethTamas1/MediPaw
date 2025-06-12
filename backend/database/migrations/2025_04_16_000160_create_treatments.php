@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cures', function (Blueprint $table) {
-            $table->id(); // ez automatikusan unsigned big integer + auto increment + primary key
-            $table->string('cureType');
+        Schema::create('treatments', function (Blueprint $table) {
+            $table->id();
+
+            $table->string("treatmentType", 100);
+            $table->date("date");
         });
-        
     }
 
     /**
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cures');
+        Schema::dropIfExists('treatments');
     }
 };

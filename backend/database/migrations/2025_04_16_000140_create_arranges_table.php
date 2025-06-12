@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cure_animal', function (Blueprint $table) {
-            $table->id();
-
-            //"cure_id" mező
-            $table->unsignedBigInteger("cure_id");
-            $table->foreign("cure_id")->references("id")->on("cures")->onDelete("cascade");
+        Schema::create('arranges', function (Blueprint $table) {
 
             //"animal_id" mező
             $table->unsignedBigInteger("animal_id");
             $table->foreign("animal_id")->references("id")->on("animals")->onDelete("cascade");
 
-            $table->string("date", 100);
+            $table->integer("price");
+            $table->text("description");
         });
     }
 
@@ -31,7 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oltas_allat');
-
+        Schema::dropIfExists('arranges');
     }
 };

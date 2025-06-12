@@ -14,11 +14,7 @@ class Treatment extends Model
 
     protected $fillable = [
         "id",
-        "description",
-        "animal_id",
-        "date",
-        "clinic_id",
-        "paid",
-        "worker_id",
+        "treatmentType",
+        "date"
     ];
 }

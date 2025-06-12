@@ -15,13 +15,17 @@ class KeeperSeeder extends Seeder
     {
         DB::table("keepers")->insert([
             [
-                "owner_id"=>1,
-                "animal_id"=>1
+                "name" => "Első Gazdi",
+                "address" => "Első gazdi lokáció",
+                "phone" => "06707998431",
+                "email" => "elsogazdi@gmail.com"
             ],
             [
-                "owner_id"=>2,
-                "animal_id"=>2
-            ]
+                "name" => "Második Gazdi",
+                "address" => "Második gazdi lokáció",
+                "phone" => "06309774178",
+                "email" => "masodikgazdi@gmail.com"
+            ],
         ]);
     }
 }

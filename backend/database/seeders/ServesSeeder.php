@@ -2,28 +2,25 @@
 
 namespace Database\Seeders;
 
-use DateTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Cure_AnimalSeeder extends Seeder
+class ServesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table("cure_animal")->insert([
+        DB::table("serves")->insert([
             [
-                "cure_id"=>1,
-                "animal_id"=>1,
-                "date"=>"2025.04.16 16:11"
+                "keeper_id" => 1,
+                "user_id" => 1
             ],
             [
-                "cure_id"=>2,
-                "animal_id"=>2,
-                "date"=>"2025.04.12 11:00"
+                "keeper_id" => 2,
+                "user_id" => 2
             ]
         ]);
     }

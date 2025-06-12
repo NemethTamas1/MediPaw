@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Keep extends Model
+class Has extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,6 @@ class Keep extends Model
 
     protected $fillable = [
         "animal_id",
-        "owner_id",
+        "keeper_id",
     ];
 }
