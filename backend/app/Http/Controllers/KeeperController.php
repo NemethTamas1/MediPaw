@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keep;
+use App\Http\Resources\KeeperResource;
+use App\Models\Keeper;
 use Illuminate\Http\Request;
 
 class KeeperController extends Controller
@@ -12,7 +13,8 @@ class KeeperController extends Controller
      */
     public function index()
     {
-        //
+        $data = Keeper::with(["animals"])->get();
+        return KeeperResource::collection($data);
     }
 
     /**

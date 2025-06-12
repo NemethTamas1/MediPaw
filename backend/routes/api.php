@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource("/animals", AnimalController::class);
 Route::apiResource("/owners", OwnerController::class);
 Route::apiResource("/clinics", ClinicController::class);
-Route::apiResource("/workers", WorkerController::class);
+Route::apiResource("/users", UserController::class);
 
 // Regisztráció és authentikáció
 Route::post("/register/worker", [RegisterController::class, "store"])->name("register.store");

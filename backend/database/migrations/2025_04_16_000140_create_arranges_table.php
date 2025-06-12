@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign("animal_id")->references("id")->on("animals")->onDelete("cascade");
 
             $table->integer("price");
-            $table->text("description");
+            $table->text("description");    
         });
     }
 

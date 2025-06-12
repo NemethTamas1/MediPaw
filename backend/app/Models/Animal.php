@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Animal extends Model
 {
@@ -22,7 +23,7 @@ class Animal extends Model
         "weight",
     ];
 
-    public function keeper():BelongsTo {
-        return $this->belongsTo(Keeper::class, 'animal_id', 'id');
+    public function keeper():BelongsToMany {
+        return $this->belongsToMany(Keeper::class, 'has',  'animal_id', 'keeper_id');
     }
 }
