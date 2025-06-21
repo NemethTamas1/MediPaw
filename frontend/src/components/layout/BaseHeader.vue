@@ -5,7 +5,7 @@
       <!-- Bal oldal: Logo + Főoldal -->
       <div class="flex items-center space-x-6">
         <RouterLink to="/" class="flex items-center space-x-3">
-          <span class="self-center text-2xl font-semibold">Medi <i class="fa-solid fa-paw"></i> Paw</span>
+          <span class="self-center text-2xl font-semibold">KnowYourArtist</span>
         </RouterLink>
 
         <RouterLink to="/" class="flex items-center space-x-3">

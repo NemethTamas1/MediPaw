@@ -25,12 +25,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Model::shouldBeStrict();
-        
-        Gate::define('isDoctor', [UserPolicy::class, 'isDoctor']);
-        Gate::define('isAssistant', [UserPolicy::class, 'isAssistant']);
-        Gate::define('isCleaner', [UserPolicy::class, 'isCleaner']);
-        Gate::define('isGazdi', function($user){
-            return $user instanceof Gazdi;
-        });
     }
 }
