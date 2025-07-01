@@ -26,19 +26,31 @@ class MusicController
      */
     public function store(StoreMusicRequest $request)
     {
-        $data = $request->validated();
+        // 1) Létrehozzuk a Music rekordot – csak a Music tábla mezői (format, price)
+        $music = Music::create([
+            'format' => $request->format,
+            'price'  => $request->price,
+        ]);
 
-        $newMusic = Music::create($data);
+        // 2) Létrehozzuk a kapcsolódó Merch rekordot – itt használjuk a name, description és image_url mezőket
+        // Ezek a mezők a Merch táblához tartoznak, nem a Music modellhez.
+        $music->merch()->create([
+            'artist_id'  => $request->artist_id,
+            'name'       => $request->name,        // <-- Merch mező, nem Music
+            'description'=> $request->description, // <-- Merch mező, nem Music
+            'image_url'  => $request->image_url,   // <-- Merch mező, nem Music
+            "type" => $request->type
+        ]);
 
-        return new MusicResource($newMusic);
+        return new MusicResource($music->load('merch'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Music $music):JsonResource
+    public function show(Music $music): JsonResource
     {
-        return Music::findOrFail($music->id);
+        return new MusicResource($music->load('merch'));
     }
 
     /**
@@ -48,9 +60,9 @@ class MusicController
     {
         $data = $request->validated();
 
-        $updatedMusic = $music->update($data);
+        $music->update($data);
 
-        return new MusicResource($updatedMusic);
+        return new MusicResource($music);
     }
 
     /**

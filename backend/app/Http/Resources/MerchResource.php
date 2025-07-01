@@ -17,7 +17,7 @@ class MerchResource extends JsonResource
         return [
             "name" => $this->name,
             "description" => $this->description,
-            "type" => $this->type
+            "format" => $this->format
         ];
     }
 }

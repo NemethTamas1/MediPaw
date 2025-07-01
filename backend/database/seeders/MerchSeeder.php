@@ -16,33 +16,33 @@ class MerchSeeder extends Seeder
         DB::table("merches")->insert([
             [
                 // id: 1
-                "artist_id" => 1, // Peep
-                "name" => "Come Over When You're Sober Part 1",
-                "description" => "Come Over When You're Sober, Pt. 1 is the debut studio album by American rapper and singer Lil Peep.",
+                "artist_id" => 1,
+                "name" => "Bakelit Album",
+                "description" => "Leírás",
                 "type" => "Music",
                 "image_url" => "asd"
             ],
             [
                 // id: 2
                 "artist_id" => 1,
-                "name" => "Black OG Skeleton T-Shirt",
-                "description" => "Pamutból készült ruha, gecijó fijam vegyed megfele!",
+                "name" => "Fekete Póló",
+                "description" => "Prémium minőségű, 100% pamutból készült fekete póló, elöl egyedi Skeleton grafikai nyomattal.",
                 "type" => "Clothing",
                 "image_url" => "asd"
             ],
             [
                 // id: 3
-                "artist_id" => 2, // Alex Terrible
-                "name" => "Kingdom of Storm and Thunder",
-                "description" => "“Kingdom of Storm and Thunder” is the second single of Alex Terrible's debut album. It was released November 17th 2023",
+                "artist_id" => 2,
+                "name" => "CD Neve",
+                "description" => "Leírás",
                 "type" => "Music",
                 "image_url" => "asd"
             ],
             [
                 // id: 4
-                "artist_id" => 2, // Alex Terrible
-                "name" => "(SLAUGHTER TO PREVAIL) ALEX TERRIBLE MASK 'KID OF DARKNESS' (BLOODY)",
-                "description" => "Mask is made of high quality plastic with soft lining, adjustable elastic straps, movable jaw.",
+                "artist_id" => 2,
+                "name" => "Merch Maszk",
+                "description" => "Maszk Leírás",
                 "type" => "Clothing",
                 "image_url" => "asd"
             ]

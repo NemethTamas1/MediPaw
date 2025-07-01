@@ -48,9 +48,9 @@ class ArtistController
     {
         $data = $request->validated();
 
-        $updatedData = $artist->update($data);
+        $artist->update($data);
 
-        return new ArtistResource($updatedData);
+        return new ArtistResource($artist);
     }
 
     /**

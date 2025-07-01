@@ -18,11 +18,12 @@ class Merch extends Model
         "artist_id",
         "name",
         "description",
-        "type",
-        "image_url"
+        "image_url",
+        "type"
     ];
 
-    public function merchable():MorphTo {
+    public function merchable(): MorphTo
+    {
         return $this->morphTo();
     }
 }

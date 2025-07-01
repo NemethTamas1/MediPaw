@@ -22,8 +22,7 @@ class UpdateMusicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "merch_id" => ["required", "integer", "exists:merches,id", "min:0"],
-            "type" => ["required", "string", "in:Bakelit,Kazetta,CD"]
+            "format" => ["required", "string", "in:Bakelit,Kazetta,CD"]
         ];
     }
 }

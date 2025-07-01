@@ -22,8 +22,15 @@ class StoreMusicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "merch_id" => ["required", "integer", "exists:merches,id", "min:0"],
-            "type" => ["required", "string", "in:Bakelit,Kazetta,CD"]
+            //Music modell mezők
+            'format' => ['required', 'string', 'in:Bakelit,Kazetta,CD'],
+            "price" => ["required", "integer", "min:0"],
+
+            //Merch modell kiegészítők
+            'artist_id' => ['required', 'integer', 'exists:artists,id'],
+            'name' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string'],
+            'image_url' => ['required', 'string', 'max:255'],
         ];
     }
 }

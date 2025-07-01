@@ -50,8 +50,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function keepers():BelongsToMany {
-        return $this->belongsToMany(Keeper::class, 'serves', 'user_id', 'keeper_id');
-    }
 }

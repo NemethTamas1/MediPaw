@@ -15,7 +15,8 @@ class Music extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        "type"
+        "format",
+        "price"
     ];
 
     public function merch():MorphOne {

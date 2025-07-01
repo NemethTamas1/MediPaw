@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('merches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("artist_id")->constrained();
+            $table->foreignId("artist_id")->constrained()->onDelete("cascade");
             $table->string("name", 100);
+            $table->string("type", 50);
             $table->text("description");
-            $table->string("type", 30);
-            $table->string("image_url", 255);
+
+            //morph
             $table->nullableMorphs('merchable');
+            $table->string("image_url", 255);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('merches');

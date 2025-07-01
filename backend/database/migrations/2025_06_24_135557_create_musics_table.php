@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('musics', function (Blueprint $table) {
             $table->id();
-            $table->string("type", 30);
+            $table->string('format');
+            $table->integer("price");
         });
     }
 

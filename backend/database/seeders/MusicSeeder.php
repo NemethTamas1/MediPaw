@@ -11,10 +11,12 @@ class MusicSeeder extends Seeder
     {
         DB::table("musics")->insert([
             [
-                "type" => "Bakelit"
+                "format" => "Bakelit",
+                "price" => 20000
             ],
             [
-                "type" => "CD"
+                "format" => "CD",
+                "price" => 6000
             ]
         ]);
     }

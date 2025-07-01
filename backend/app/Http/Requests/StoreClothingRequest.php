@@ -22,7 +22,6 @@ class StoreClothingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "merch_id" => ["required", "integer", "min:0", "exists:merches,id"],
             "name" => ["required", "string", "max:100"],
             "size" => ["required", "string", "in:XS,S,M,L,XL"],
             "sex" => ["required", "string", "max:10", "in:M,F,U"],

@@ -26,7 +26,7 @@ class UpdateMerchRequest extends FormRequest
             "name" => ["required", "string", "min:0", "max:100"],
             "description" => ["string", "required"],
             "type" => ["required", "string", "max:30", "in:music,clothing"],
-            "imageUrl" => ["required", "string", "max:255"],
+            "image_url" => ["required", "string", "max:255"],
         ];
     }
 }

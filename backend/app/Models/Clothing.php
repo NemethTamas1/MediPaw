@@ -14,7 +14,6 @@ class Clothing extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        "merch_id",
         "name",
         "size",
         "sex",

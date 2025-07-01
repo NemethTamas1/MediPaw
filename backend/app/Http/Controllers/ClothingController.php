@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\StoreArtistResource;
+use App\Http\Requests\StoreClothingRequest;
 use App\Http\Requests\UpdateArtistRequest;
+use App\Http\Requests\UpdateClothingRequest;
 use App\Http\Resources\ArtistResource;
 use App\Http\Resources\ClothingResource;
 use App\Models\Artist;
@@ -18,13 +20,13 @@ class ClothingController
 
         return ClothingResource::collection($data);
     }
-    public function store(StoreArtistRequest $request)
+    public function store(StoreClothingRequest $request)
     {
         $data = $request->validated();
 
         $newArtist = Artist::create($data);
 
-        return new ArtistResource($newArtist);
+        return new ClothingResource($newArtist);
     }
 
     public function show(Clothing $clothing)
@@ -32,13 +34,13 @@ class ClothingController
         //
     }
 
-    public function update(UpdateArtistRequest $request, Clothing $clothing)
+    public function update(UpdateClothingRequest $request, Clothing $clothing)
     {
         $data = $request->validated();
 
-        $updatedClothing = $clothing->update($data);
+        $clothing->update($data);
 
-        return new ClothingResource($updatedClothing);
+        return new ClothingResource($clothing);
     }
 
     public function destroy(Clothing $clothing)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMerchRequest;
+use App\Http\Requests\UpdateMerchRequest;
 use App\Http\Resources\MerchResource;
 use App\Models\Merch;
 use Illuminate\Http\Request;
@@ -38,19 +39,21 @@ class MerchController
      */
     public function show(Merch $merch):JsonResource
     {
-        return Merch::findOrFail($merch->id);
+        $data = Merch::findOrFail($merch->id);
+
+        return new MerchResource($data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Merch $merch)
+    public function update(UpdateMerchRequest $request, Merch $merch)
     {
         $data = $request->validated();
 
-        $updatedMerch = $merch->update($data);
+        $merch->update($data);
 
-        return new MerchResource($updatedMerch);
+        return new MerchResource($merch);
     }
 
     /**

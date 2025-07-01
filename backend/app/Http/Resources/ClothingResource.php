@@ -15,7 +15,6 @@ class ClothingResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "merch_id" => $this->merch_id,
             "name" => $this->name,
             "size" => $this->size,
             "sex" => $this->sex,
