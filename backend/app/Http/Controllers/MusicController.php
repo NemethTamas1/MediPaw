@@ -26,20 +26,19 @@ class MusicController
      */
     public function store(StoreMusicRequest $request)
     {
-        // 1) Létrehozzuk a Music rekordot – csak a Music tábla mezői (format, price)
+        $data = $request->validated();
+        
         $music = Music::create([
-            'format' => $request->format,
-            'price'  => $request->price,
+            'format' => $data['format'],
+            'price'  => $data['price'],
         ]);
 
-        // 2) Létrehozzuk a kapcsolódó Merch rekordot – itt használjuk a name, description és image_url mezőket
-        // Ezek a mezők a Merch táblához tartoznak, nem a Music modellhez.
         $music->merch()->create([
-            'artist_id'  => $request->artist_id,
-            'name'       => $request->name,        // <-- Merch mező, nem Music
-            'description'=> $request->description, // <-- Merch mező, nem Music
-            'image_url'  => $request->image_url,   // <-- Merch mező, nem Music
-            "type" => $request->type
+            'artist_id'  => $data['artist_id'],
+            'name'       => $data['name'],
+            'description'=> $data['description'],
+            'image_url'  => $data['image_url'],
+            "type" => "music"
         ]);
 
         return new MusicResource($music->load('merch'));

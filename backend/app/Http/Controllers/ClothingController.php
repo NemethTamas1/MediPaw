@@ -11,6 +11,7 @@ use App\Http\Resources\ArtistResource;
 use App\Http\Resources\ClothingResource;
 use App\Models\Artist;
 use App\Models\Clothing;
+use App\Models\Merch;
 
 class ClothingController
 {
@@ -24,9 +25,23 @@ class ClothingController
     {
         $data = $request->validated();
 
-        $newArtist = Artist::create($data);
+        $clothing = new Clothing([
+            "size" => $data['size'],
+            "sex" => $data['sex'],
+            "color" => $data['color'],
+            "price" => $data['price'],
+        ]);
+        $clothing->save();
 
-        return new ClothingResource($newArtist);
+        $clothing->merch()->create([
+            'artist_id' => $data['artist_id'],
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'image_url' => $data['image_url'],
+            'type' => "clothing",
+        ]);
+
+        return new ClothingResource($clothing->load('merch'));
     }
 
     public function show(Clothing $clothing)

@@ -22,11 +22,17 @@ class StoreClothingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => ["required", "string", "max:100"],
+            // Clothing mezők
             "size" => ["required", "string", "in:XS,S,M,L,XL"],
             "sex" => ["required", "string", "max:10", "in:M,F,U"],
             "color" => ["required", "string", "max:30"],
-            "price" => ["required", "min:0", "integer"]
+            "price" => ["required", "min:0", "integer"],
+
+            // Merch mezők
+            'artist_id' => ['required', 'integer', 'exists:artists,id'],
+            'name' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string'],
+            'image_url' => ['required', 'string', 'max:255'],
         ];
     }
 }
