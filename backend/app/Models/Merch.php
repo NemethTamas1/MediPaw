@@ -20,7 +20,8 @@ class Merch extends Model
         "description",
         "image_url",
         "type",
-        "format"
+        "format",
+        "price"
     ];
 
     public function merchable(): MorphTo

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("name", 100);
             $table->date("birth");
             $table->string("genre", 50);
+            $table->string("image_path", 100)->nullable();
         });
     }
 

@@ -17,7 +17,8 @@ class Artist extends Model
     protected $fillable = [
         "name",
         "birth",
-        "genre"
+        "genre",
+        "image_path"
     ];
 
     public function merches():HasMany {

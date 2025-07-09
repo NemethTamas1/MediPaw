@@ -17,7 +17,8 @@ class MusicFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "format" => $this->faker->randomElement(["Bakelit", "CD", "Kazetta"]),
+            "price" => $this->faker->numberBetween(5000,15000)
         ];
     }
 }

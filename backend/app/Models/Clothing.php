@@ -14,11 +14,15 @@ class Clothing extends Model
 
     public $timestamps = false;
     protected $fillable = [
+        "price",
+        "artist_id",
         "name",
+        "description",
+        "image_url",
+        "type",
         "size",
         "sex",
-        "color",
-        "price",
+        "color"
     ];
 
     public function merch(): MorphOne

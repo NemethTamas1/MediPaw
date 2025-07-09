@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("name", 100);
             $table->string("type", 50);
             $table->text("description");
+            $table->string("image_path", 100)->nullable();
 
             //morph
             $table->nullableMorphs('merchable');

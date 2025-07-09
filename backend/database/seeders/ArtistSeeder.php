@@ -15,14 +15,16 @@ class ArtistSeeder extends Seeder
     {
         DB::table("artists")->insert([
             [
-                "name" => "Első Artist",
+                "name" => "XXXTENTACION",
                 "birth" => "1996-11-01",
-                "genre" => "Rap"
+                "genre" => "Rap",
+                "image_path" => "/frontend/public/artist1"
             ],
             [
                 "name" => "Második Artist",
                 "birth" => "1993-06-25",
-                "genre" => "Metalcore"
+                "genre" => "Metalcore",
+                "image_path" => "/frontend/public/artist2"
             ]
         ]);
     }

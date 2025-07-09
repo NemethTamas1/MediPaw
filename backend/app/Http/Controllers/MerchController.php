@@ -17,7 +17,7 @@ class MerchController
      */
     public function index():JsonResource
     {
-        $data = Merch::all();
+        $data = Merch::with(["merchable"])->get();
 
         return MerchResource::collection($data);
     }

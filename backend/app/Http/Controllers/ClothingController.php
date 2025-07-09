@@ -25,13 +25,12 @@ class ClothingController
     {
         $data = $request->validated();
 
-        $clothing = new Clothing([
+        $clothing = Clothing::create([
             "size" => $data['size'],
             "sex" => $data['sex'],
             "color" => $data['color'],
             "price" => $data['price'],
         ]);
-        $clothing->save();
 
         $clothing->merch()->create([
             'artist_id' => $data['artist_id'],
